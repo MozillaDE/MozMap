@@ -62,7 +62,7 @@ angular.module('MozMap', [])
 			}
 
 			featureLayer.addTo(map);
-			console.log(featureLayer);
+
 			map.fitBounds(featureLayer.getBounds());
 		});
 	});
@@ -133,7 +133,14 @@ angular.module('MozMap', [])
 		return location.join(', ');
 	}
 
+})
+
+.directive('scrollIf', function () {
+	return function (scope, element, attrs) {
+		scope.$watch(attrs.scrollIf, function(value) {
+			if (scope.$eval(attrs.scrollIf)) {
+				element[0].scrollIntoView({ behavior: 'smooth' });
+			}
+		});
+	}
 });
-
-
-

@@ -16,7 +16,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
 		<script src="https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js"></script>
 		<script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
-		
+		<script src="default.js"></script>
+
 	</head>
 	<body ng-controller="MozMapController">
 
@@ -41,7 +42,8 @@
 			<ul id="userlist">
 				<li ng-repeat="mozillian in mozillians | filter : mozFilter | orderBy : 'full_name || username'"
 					ng-click="openPopup(mozillian)"
-					ng-class="mozillian === activeUser ? 'active' : ''">
+					ng-class="mozillian === activeUser ? 'active' : ''"
+					scroll-if="mozillian === activeUser">
 					<b>{{ mozillian.full_name || mozillian.username }}</b>
 					{{ mozillian.map_data ? '' : ' (ohne Standort)' }}
 				</li>
@@ -56,7 +58,5 @@
 		
 		<p>Den Code dieser Karte findest du auf <a href="https://github.com/alex-pl/MozMap">GitHub</a>.</p>
 
-		<script type="text/javascript" src="default.js"></script>
-		
 	</body>
 </html>
