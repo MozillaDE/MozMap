@@ -3,39 +3,58 @@
 angular.module('MozMap', [])
 .controller('MozMapController', function ($scope, $http) {
 
+	var featureLayer,
+		map;
+
 	$scope.mozillians = [];
 	$scope.activeUser = null;
+
+	$scope.settings = {
+		irc: false
+	};
+
+	$scope.filter = {
+		city: true,
+		region: true,
+		country: true,
+		none: true
+	};
+
+	$scope.mozFilter = function (user) {
+		return (
+			($scope.filter.city && user.city) ||
+			($scope.filter.region && user.region && !user.city) ||
+			($scope.filter.country && user.country && !user.region && !user.city) ||
+			($scope.filter.none && !user.map_data)
+		);
+	}
+
 	$scope.openPopup = function (user) {
 		if (user.marker) {
 			user.marker.openPopup();
-		} else {
+		} else if ($scope.activeUser.marker) {
 			$scope.activeUser.marker.closePopup();
 		}
 		$scope.activeUser = user;
 	}
 	
-	$scope.settings = {
-		irc: false
-	};
-	
-	var featureLayer,
-		map;
-	
 	$http.get('./webconf.json').then(function (res) {
 		
 		L.mapbox.accessToken = res.data.mapbox_access_token;
-	
 
 		map = L.mapbox.map('map', 'mapbox.streets');
-		featureLayer = new L.mapbox.featureLayer(); // L.MarkerClusterGroup();
+		featureLayer = new L.mapbox.featureLayer(); // L.MarkerClusterGroup(); breaks openPopup()
 
 
 		$http.get('./mozillians.json').then(function (res) {
-			var json = res.data;
-			$scope.mozillians = json;
 
-			for (var i = 0; i < json.length; i++) {
-				var user = json[i];
+			$scope.mozillians = res.data;
+
+			for (var i = 0; i < $scope.mozillians.length; i++) {
+
+				var user = $scope.mozillians[i];
+
+				user.location = createLocationString(user);
 
 				if (user.map_data) {
 					addMarker(user);
@@ -43,6 +62,7 @@ angular.module('MozMap', [])
 			}
 
 			featureLayer.addTo(map);
+			console.log(featureLayer);
 			map.fitBounds(featureLayer.getBounds());
 		});
 	});
@@ -95,6 +115,22 @@ angular.module('MozMap', [])
 			'</div>' +
 
 			'<div style="clear:both"></div>');
+	}
+
+	function createLocationString(user) {
+		var location = [];
+
+		if (user.city) {
+			location.push(user.city);
+		}
+		if (user.region) {
+			location.push(user.region);
+		}
+		if (user.country) {
+			location.push(user.country);
+		}
+
+		return location.join(', ');
 	}
 
 });

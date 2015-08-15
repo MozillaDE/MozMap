@@ -26,10 +26,20 @@
 		
 		<div class="map_settings">
 
-			{{ mozillians.length }} Mozillians
+			<h3>Ansicht</h3>
+			<label><input type="checkbox" ng-model="settings.marker"> Marker gruppieren</label>
+			<label><input type="checkbox" ng-model="settings.irc"> IRC-Namen anzeigen</label>
+
+			<h3>Filter</h3>
+			<label><input type="checkbox" ng-model="filter.city"> Stadt</label>
+			<label><input type="checkbox" ng-model="filter.region"> Bezirk</label>
+			<label><input type="checkbox" ng-model="filter.country"> Land</label>
+			<label><input type="checkbox" ng-model="filter.none"> Ohne Ortsangabe</label>
+
+			{{ (mozillians | filter: mozFilter).length + ' von ' + mozillians.length }} Mozillians
 
 			<ul id="userlist">
-				<li ng-repeat="mozillian in mozillians | orderBy : 'full_name || username'"
+				<li ng-repeat="mozillian in mozillians | filter : mozFilter | orderBy : 'full_name || username'"
 					ng-click="openPopup(mozillian)"
 					ng-class="mozillian === activeUser ? 'active' : ''">
 					<b>{{ mozillian.full_name || mozillian.username }}</b>
