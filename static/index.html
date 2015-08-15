@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<meta charset="utf-8">
+		
+		<title>MozMap</title>
+		
+		<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+		<link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
+		<link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
+		<link rel="stylesheet" href="default.css">
+
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js"></script>
+		<script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
+		
+	</head>
+	<body>
+		
+		
+		<h1>MozMap</h1>
+		<h2>Deutschsprachige Mozillianer</h2>
+		<p>Willkommen bei der MozMap! Dies ist eine Karte mit Mozillianern aus der <a href="http://www.mozilla.de/">deutschsprachigen Mozilla-Community</a>.</p>
+		
+		<div id="map"></div>
+		
+		<h3>Hinweis zu den dargestellten Daten</h3>
+		<p>Bitte beachte, dass nicht alle Mozillianer ihren Standort öffentlich angegeben haben. Die Karte zeigt dementsprechend nur einen Teil der Community. Die zur Verfügung stehenden Standorte sind teilweise nur auf das Land oder einen Bezirk eingegrenzt oder verweisen auf eine größere Nachbarstadt. Die Daten entstammen dem <a href="https://mozillians.org/">Mozillianer</a>-Verzeichnis.</p>
+		
+		<p>Den Code dieser Karte findest du auf <a href="https://github.com/alex-pl/MozMap">GitHub</a>.</p>
+
+		<script type="text/javascript" src="default.js"></script>
+		
+	</body>
+</html>
