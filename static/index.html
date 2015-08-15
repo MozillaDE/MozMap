@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="MozMap">
 	<head>
 		
 		<meta charset="utf-8">
@@ -13,18 +13,32 @@
 		<link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
 		<link rel="stylesheet" href="default.css">
 
-		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
 		<script src="https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js"></script>
 		<script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
 		
 	</head>
-	<body>
-		
-		
+	<body ng-controller="MozMapController">
+
 		<h1>MozMap</h1>
 		<h2>Deutschsprachige Mozillianer</h2>
 		<p>Willkommen bei der MozMap! Dies ist eine Karte mit Mozillianern aus der <a href="http://www.mozilla.de/">deutschsprachigen Mozilla-Community</a>.</p>
 		
+		<div class="map_settings">
+
+			{{ mozillians.length }} Mozillians
+
+			<ul id="userlist">
+				<li ng-repeat="mozillian in mozillians | orderBy : 'full_name || username'"
+					ng-click="openPopup(mozillian)"
+					ng-class="mozillian === activeUser ? 'active' : ''">
+					<b>{{ mozillian.full_name || mozillian.username }}</b>
+					{{ mozillian.map_data ? '' : ' (ohne Standort)' }}
+				</li>
+			</ul>
+
+		</div>
+
 		<div id="map"></div>
 		
 		<h3>Hinweis zu den dargestellten Daten</h3>

@@ -35,7 +35,29 @@ body {
 	position: fixed;
 	top: 30px;
 	right: 30px;
+	bottom: 30px;
+	overflow: auto;
+	max-width: 400px;
 }
 .map_settings label {
 	display: block;
+}
+
+#userlist {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-top: 1px solid #aaa;
+}
+#userlist li {
+	display: block;
+	border-bottom: 1px solid #aaa;
+	padding: 4px;
+	margin: 0;
+}
+#userlist li:hover {
+	background: #eee;
+}
+#userlist li.active {
+	background: #ccc;
 }
