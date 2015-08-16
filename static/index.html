@@ -64,12 +64,13 @@
 					<div id="map-sidebar">
 						<div id="userlist-container">
 							<ul id="userlist">
-								<li ng-repeat="mozillian in mozillians | filter : mozFilter | orderBy : 'full_name || username'"
-									ng-click="openPopup(mozillian)"
-									ng-class="mozillian === activeUser ? 'active' : ''"
-									scroll-if="mozillian === activeUser">
-									<b>{{ mozillian.full_name || mozillian.username }}</b>
-									<i ng-hide="mozillian.map_data" class="fa fa-map-marker"></i><i ng-hide="mozillian.map_data" class="fa fa-times"></i>
+								<li ng-repeat="mozillian in mozillians | filter : mozFilter | orderBy : 'full_name || username'">
+									<a ng-click="openPopup(mozillian)" href=""
+									   ng-class="mozillian === activeUser ? 'active' : ''"
+									   scroll-if="mozillian === activeUser">
+										<b>{{ mozillian.full_name || mozillian.username }}</b>
+										<i ng-hide="mozillian.map_data" class="fa fa-map-marker"></i><i ng-hide="mozillian.map_data" class="fa fa-times"></i>
+									</a>
 								</li>
 							</ul>
 						</div>

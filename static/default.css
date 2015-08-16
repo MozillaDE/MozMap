@@ -53,23 +53,34 @@
 #userlist li {
 	display: block;
 	border-bottom: 1px solid #eee;
-	padding: 10px;
+	padding: 0;
 	margin: 0;
-	position: relative;
-	overflow: visible;
 }
 #userlist li:last-child {
 	border-bottom: 0;
 }
-#userlist li:hover {
-	background: rgba(0, 0, 0, .15);
+#userlist a {
+	display: block;
+	padding: 10px;
+	margin: 0;
+	position: relative;
+	overflow: visible;
+	color: #333;
 }
-#userlist li.active {
+#userlist a:hover,
+#userlist a:focus,
+#userlist a:active {
+	background: rgba(0, 0, 0, .15);
+	outline: none;
+}
+#userlist a.active {
 	background: #C13832;
 	color: #fff;
 }
-#userlist li:hover::after,
-#userlist li.active::after {
+#userlist a:hover::after,
+#userlist a:focus::after,
+#userlist a:active::after,
+#userlist a.active::after {
 	content: " ";
 	width: 0; 
 	height: 0; 
@@ -82,7 +93,7 @@
 	top: 0;
 	z-index: 10;
 }
-#userlist li.active::after {
+#userlist a.active::after {
 	border-left-color: #C13832;
 }
 
@@ -119,6 +130,9 @@
 #map-settings:hover {
 	padding: 6px 10px 34px 10px;
 	height: auto;
+}
+#map-settings label {
+	cursor: pointer;
 }
 
 #map-counter {
