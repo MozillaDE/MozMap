@@ -87,7 +87,7 @@ angular.module('MozMap', [])
 		return (
 			'<div class="popup_main">' +
 
-				'<img src="' + user.photo + '" alt="Picture" width="50" height="50">' +
+				'<img src="' + (user.photo ? user.photo : 'images/mozillian.png') + '" alt="Picture" width="50" height="50">' +
 
 				'<div class="text_info">' +
 					// name
