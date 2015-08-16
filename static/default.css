@@ -43,9 +43,6 @@
 	height: 520px;
 	overflow: auto;
 }
-#userlist-container::-webkit-scrollbar {
-    display: none;
-}
 #userlist {
 	width: 170px;
 	margin: 0;
@@ -185,6 +182,11 @@
 		margin-left: 170px;
 	}
 }
+@media (min-width: 601px) {
+	#userlist-container::-webkit-scrollbar {
+		display: none;
+	}
+}
 @media (max-width: 600px) {
 	#map {
 		height: 400px;
@@ -215,8 +217,10 @@
 		width: auto;
 		height: 190px;
 	}
-	#userlist li:hover::after,
-	#userlist li.active::after {
+	#userlist a:hover::after,
+	#userlist a:focus::after,
+	#userlist a:active::after,
+	#userlist a.active::after {
 		content: none;
 		display: none;
 	}
