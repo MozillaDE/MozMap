@@ -32,7 +32,7 @@ angular.module('MozMap', [])
 	$scope.openPopup = function (user) {
 		if (user.marker) {
 			user.marker.openPopup();
-		} else if ($scope.activeUser.marker) {
+		} else if ($scope.activeUser && $scope.activeUser.marker) {
 			$scope.activeUser.marker.closePopup();
 		}
 		$scope.activeUser = user;
