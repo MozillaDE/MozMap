@@ -1,0 +1,682 @@
+@font-face {
+    font-family: 'FA-Icons-Home';
+    src: url('https://mozorg.cdn.mozilla.net/media/fonts/icons-home.eot?12-2014#iefix') format('embedded-opentype'),
+    url('https://mozorg.cdn.mozilla.net/media/fonts/icons-home.woff?12-2014') format('woff'),
+    url('https://mozorg.cdn.mozilla.net/media/fonts/icons-home.ttf?12-2014') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figure, figcaption, hgroup, menu, footer, header, main, nav, section, summary, time, mark, audio, video {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-family: "Open Sans", sans-serif;
+    color: #333;
+    background: #FFF none repeat scroll 0% 0%;
+}
+
+#steps {
+    background-color: #F6F4EC;
+}
+
+.main-header {
+    border-top: 2px solid white;
+    background: #C13832 none repeat scroll 0% 0%;
+    width: 100%;
+    padding: 0;
+}
+
+#masthead .container {
+    width: 960px;
+    margin: 0px auto;
+    padding: 0px 10px;
+}
+
+#masthead,
+#main-feature,
+#main-content,
+#colophon,
+.billboard,
+.container {
+    display: block;
+    margin: 0 auto;
+    padding-left: 48px;
+    padding-right: 48px;
+    position: relative;
+    width: 960px;
+}
+
+#masthead nav {
+    float: right;
+    margin: 0px 16px;
+    text-transform: uppercase;
+    font-size: 0.8125rem;
+}
+
+#masthead nav li {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0px;
+}
+
+#masthead nav li a:link, #masthead nav li a:visited {
+    color: #FFF;
+}
+
+#masthead nav li a, #masthead nav li b {
+    display: inline-block;
+    padding: 12px;
+    font-weight: normal;
+}
+
+#masthead nav li a:hover {
+  text-decoration: underline;
+}
+
+.main-header {
+    padding-top: 100px;
+}
+
+h1 {
+    font-size: 4.5rem;
+    text-align: center;
+    color: #C13832;
+    font-family: "Open Sans Light", "Open Sans", sans-serif;
+    font-weight: normal;
+    display: block;
+    margin: 0px 0px 48px;
+    line-height: 1;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.75);
+    letter-spacing: -0.035em;
+}
+
+.head-stats {
+    list-style: outside none none;
+    margin: 30px auto;
+    width: 960px;
+    padding: 0px;
+}
+
+.head-stats li {
+    float: left;
+    width: 300px;
+    margin: 0px 10px;
+    text-align: center;
+}
+
+.head-stats strong {
+    display: block;
+    font-size: 2.625rem;
+    line-height: 1.1;
+    font-family: "Open Sans Light",X-LocaleSpecific-Light,"Open Sans",X-LocaleSpecific,sans-serif;
+    font-weight: normal;
+}
+
+.head-stats::after {
+    display: block;
+    visibility: hidden;
+    height: 0px;
+    clear: both;
+    content: ".";
+}
+
+.section-title {
+    font-family: "Open Sans Light", "Open Sans", sans-serif;
+    font-weight: normal;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    text-align: center;
+    font-size: 2.625rem;
+    margin: 0px auto 30px;
+    padding-top: 1em;
+}
+
+#steps {
+    text-align: center;
+}
+
+.steps {
+    list-style: outside none none;
+    margin: 0px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.steps li {
+    float: left;
+    width: 220px;
+    margin: 0px 10px;
+    position: relative;
+    padding: 140px 40px 0px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.steps .step1 {
+    background-image: url("images/step1.png");
+}
+
+.steps .step2 {
+    background-image: url("images/step2.png");
+}
+
+.steps .step3 {
+    background-image: url("images/step3.png");
+}
+
+.steps::after {
+    display: block;
+    visibility: hidden;
+    height: 0px;
+    clear: both;
+    content: ".";
+}
+
+.steps li::after {
+    content: "\f178";
+    font-family: "FontAwesome";
+    font-size: 2.8125rem;
+    color: #D7D3C8;
+    position: absolute;
+    right: -35px;
+    top: 50px;
+}
+
+.steps li:last-child:after {
+    content: "";
+}
+
+.cta {
+    margin-top: 40px;
+}
+
+.cta a {
+    font-family: "Open Sans", sans-serif;
+    background-color: #0096DD;
+    color: #FFF;
+    display: inline-block;
+    border: 0px none;
+    border-radius: 0.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out 0s;
+    font-size: 1.125rem;
+    min-width: 240px;
+    padding: 20px 30px;
+}
+
+.cta a:hover {
+    background-color: #00A7F7;
+}
+
+.cta a::after {
+    content: " »";
+    white-space: nowrap;
+}
+
+.member-box {
+    position: relative;
+}
+
+.members-row {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    list-style: outside none none;
+    text-align: center;
+}
+
+.member-item {
+    flex: auto;
+    cursor: pointer;
+}
+
+.member-item h3 {
+    margin-top: 1em;
+}
+
+.member-item img {
+    display: block;
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    margin: 0 auto;
+    border: 10px solid transparent;
+}
+
+.member-item img.active {
+    border: 10px solid #C13832;
+}
+
+.member-item strong {
+    font-weight: bold;
+    font-size: 1.125rem;
+    letter-spacing: normal;
+    margin: 0px 0px 0.25em;
+}
+
+.member-box-content {
+    color: #fff;
+    min-height: 200px;
+    background-color: #C13832;
+    padding: 0px 20px 10px 20px;
+}
+
+.member-box {
+    display: none;
+}
+
+.member-box.active {
+    display: block;
+}
+
+.member-description {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+}
+
+.member-box-content h2 {
+    color: #fff;
+}
+
+.member-box a {
+  text-decoration: none;
+}
+
+.member-box a,
+.member-box a:visited,
+.member-box a:focus,
+.member-box a:active,
+.member-box a:hover {
+  color: rgb(210, 210, 210);
+}
+
+.member-box a:focus,
+.member-box a:active,
+.member-box a:hover {
+  text-decoration: underline;
+}
+
+.member-content {
+    flex: auto;
+    max-width: 70%;
+    padding-right: 40px;
+}
+
+.participating {
+    flex: auto;
+}
+
+.participating ul {
+    margin-left: 20px;
+}
+
+ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+h2 {
+    color: #484848;
+    font-size: 2.875rem;
+    text-align: center;
+    letter-spacing: -1px;
+    padding-bottom: 20px;
+}
+
+a {
+    color: #0096DD;
+    text-decoration: none;
+}
+
+p, ul, ol, dl, hgroup {
+    margin: 0px 0px 20px;
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+.module {
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.module:last-child {
+    padding-bottom: 30px;
+}
+
+#cta_header {
+  background: url("images/cta_background.jpg");
+  background-position: top;
+  width: 100%;
+  min-height: 150px;
+  max-height: 150px;
+  justify-content: center;
+  -webkit-justify-content: center;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+#cta_header h1 {
+  color: #fff;
+  text-shadow: 2px 2px 3px #000;
+  font-size: 4.5em;
+  margin: 0px;
+}
+
+/* Mozilla FOOTER */
+#colophon .logo a {
+    display: block;
+    width: 88px;
+    height: 24px;
+    background-image: url("images/footer-mozilla.png");
+    background-size: auto 24px;
+}
+
+#colophon {
+    clear: both;
+    padding: 48px 0;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    background: #565A5C none repeat scroll 0% 0%;
+    width: 100%;
+    color: #BBB;
+}
+
+#colophon .row {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#colophon a,
+#colophon a:link,
+#colophon a:visited {
+    color: #43C2FF;
+}
+
+#colophon a:hover,
+#colophon a:focus,
+#colophon a:active {
+    color: #10B1FF;
+    text-decoration: underline;
+}
+
+#colophon h1 {
+    margin-bottom: 10px;
+    font-size: 0.75rem;
+}
+
+#colophon p, #colophon ul {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+#colophon li {
+    margin: 0;
+    list-style-type: none;
+}
+
+#colophon .col {
+    float: left;
+    width: 300px;
+    margin: 0px 10px;
+}
+
+#colophon .col:last-child {
+    margin-bottom: 0;
+}
+
+
+#colophon .col-2 ul {
+    overflow: hidden;
+    list-style-type: none;
+    line-height: 1.5;
+}
+
+#colophon .col-2 ul li.wrap::before {
+  content: "\00A0\00B7\00A0"; /* &nbsp;&middot;&nbsp; */
+}
+
+#colophon .col-2 ul li.clear {
+    clear: both;
+}
+#colophon .col-2 ul li {
+    float: left;
+}
+
+#colophon li {
+    float: left;
+}
+
+#colophon li .clear {
+    clear: both;
+}
+
+#colophon .links-social li ul {
+    display: inline;
+    margin: 0;
+}
+
+#colophon .links-social li li {
+    display: inline;
+}
+
+#colophon .row::after {
+    display: block;
+    visibility:hidden;
+    height: 0px;
+    clear:both;
+    content: ".";
+}
+
+@media screen and (max-width: 1100px) {
+    #masthead {
+        box-sizing: border-box;
+    }
+
+    #masthead, .head-stats, #colophon .row {
+        width: 100%;
+    }
+
+    .container {
+        box-sizing: border-box;
+        width: 100% !important;
+    }
+
+    .head-stats li {
+        margin: 0;
+        width: 33%;
+    }
+
+    #colophon {
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    h2 {
+        padding-top: 20px;
+        font-size: 1.5rem;
+    }
+
+    .member-description {
+        display: block;
+    }
+
+    .member-content, .participating {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .member-content {
+        padding-right: 0px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #members img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .member-item img {
+      border: 6px solid transparent;
+    }
+
+    .member-item img.active {
+        border: 6px solid #C13832;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .steps li::after {
+        content: "";
+    }
+
+    .steps {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 645px) {
+    #masthead {
+        padding: 0;
+    }
+
+    #masthead #nav-main {
+        float: left;
+    }
+
+    #masthead #nav-main-menu li {
+        margin-right: 2em;
+    }
+
+    #masthead #nav-main-menu li a {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        margin-bottom: 0;
+        font-size: 2rem;
+    }
+
+    #general-community {
+        padding-bottom: 10px;
+    }
+
+    #general-community .head-stats {
+        margin: 10px 0;
+    }
+
+    #general-community .head-stats li {
+        float: none;
+        width: 100%;
+    }
+
+    #general-community .head-stats + p {
+        margin-top: 0;
+    }
+
+    #members {
+        padding-top: 0;
+    }
+
+    .head-stats li {
+      width: 100%;
+      margin-bottom: 25px;
+    }
+
+    .head-stats li:last-child {
+      margin-bottom: 0px;
+    }
+
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .steps li {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .cta {
+        margin-left: 48px;
+        margin-right: 48px;
+    }
+
+    .cta a {
+        box-sizing: border-box;
+        width: 100%;
+        min-width: 0;
+    }
+
+    #colophon .col {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0 10px;
+        width: 100%;
+    }
+
+    #members img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .member-item p {
+      display: none;
+    }
+}
+
+@media screen and (max-width: 397px) {
+  #masthead #nav-main-menu li {
+    margin-right: 6px;
+  }
+
+  #masthead #nav-main-menu li:last-child {
+    margin-right: 0px;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  #cta_header h1 {
+    font-size: 4.2em;
+  }
+}

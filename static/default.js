@@ -95,7 +95,7 @@ angular.module('MozMap', [])
 
 					// vouch status
 					(user.is_vouched
-						? '' // ' <i class="fa fa-check" title="Andere Mozillians haben für dieses Profil gebürgt."></i>'
+						? '' // ' <i class="fa fa-check" title="Andere Mozillianer haben für dieses Profil gebürgt."></i>'
 						: ' <i class="fa fa-exclamation-circle" title="Für dieses Profil wurde noch nicht gebürgt."></i>') +
 
 					'<br>' +
@@ -108,7 +108,7 @@ angular.module('MozMap', [])
 					(user.location ? ('<i class="fa fa-fw fa-map-marker"></i> ' + user.location + '<br>') : '') +
 
 					// profile
-					'<i class="fa fa-fw fa-globe"></i> <a href="' + user.url + '" target="_blank">Mozillians-Profil</a>' +
+					'<i class="fa fa-fw fa-globe"></i> <a href="' + user.url + '" target="_blank">Mozillianer-Profil</a>' +
 
 				'</div>'+
 
