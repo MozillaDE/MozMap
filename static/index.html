@@ -69,7 +69,7 @@
 									   ng-class="mozillian === activeUser ? 'active' : ''"
 									   scroll-if="mozillian === activeUser">
 										<b>{{ mozillian.full_name || mozillian.username }}</b>
-										<i ng-hide="mozillian.map_data" class="fa fa-map-marker"></i><i ng-hide="mozillian.map_data" class="fa fa-times"></i>
+										<i ng-if="!mozillian.map_data" class="fa fa-map-marker"></i><i ng-if="!mozillian.map_data" class="fa fa-times"></i>
 									</a>
 								</li>
 							</ul>
