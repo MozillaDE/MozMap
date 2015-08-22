@@ -13,21 +13,45 @@ angular.module('MozMap', [])
 		irc: false
 	};
 
+	$scope.queries = [];
 	$scope.filter = {
-		city: true,
-		region: true,
-		country: true,
-		none: true
+		country: {},
+		group: {},
+		precision: {
+			city: true,
+			region: true,
+			country: true,
+			none: true
+		}
 	};
 
-	$scope.mozFilter = function (user) {
+	$scope.precisionFilter = function (user) {
 		return (
-			($scope.filter.city && user.city) ||
-			($scope.filter.region && user.region && !user.city) ||
-			($scope.filter.country && user.country && !user.region && !user.city) ||
-			($scope.filter.none && !user.map_data)
+			($scope.filter.precision.city && user.city) ||
+			($scope.filter.precision.region && user.region && !user.city) ||
+			($scope.filter.precision.country && user.country && !user.region && !user.city) ||
+			($scope.filter.precision.none && !user.map_data)
 		);
-	}
+	};
+
+	$scope.queryFilter = function (user) { // TODO: activate this as soon as server impl. is complete
+//		var i, type, value,
+//			len = $scope.queries.length;
+//
+//		for (i = 0; i < len; i++) {
+//			type = $scope.queries[i].type;
+//			value = $scope.queries[i].value;
+//
+//			if ($scope.filter[type][value] && ( // is filter checked?
+//				(type === 'country' && user.country === value) ||
+//				(type === 'group' && user.groups.indexOf($scope.filter.group[i]) !== -1)
+//			)) {
+				return true;
+//			}
+//		}
+//
+//		return false;
+	};
 
 	$scope.openPopup = function (user) {
 		if (user.marker) {
@@ -36,15 +60,19 @@ angular.module('MozMap', [])
 			$scope.activeUser.marker.closePopup();
 		}
 		$scope.activeUser = user;
-	}
-	
+	};
+
 	$http.get('./webconf.json').then(function (res) {
-		
+
 		L.mapbox.accessToken = res.data.mapbox_access_token;
 
 		map = L.mapbox.map('map', 'mapbox.streets');
 		featureLayer = new L.mapbox.featureLayer(); // L.MarkerClusterGroup(); breaks openPopup()
 
+		$scope.queries = res.data.queries;
+		angular.forEach($scope.queries, function (query) {
+			$scope.filter[query.type][query.value] = query.default;
+		});
 
 		$http.get('./mozillians.json').then(function (res) {
 
@@ -100,7 +128,8 @@ angular.module('MozMap', [])
 
 					'<br>' +
 
-					// irc TODO make this optional
+					// irc
+					// TODO update view on settings change
 					($scope.settings.irc && user.ircname
 					    ? ('<i class="fa fa-fw fa-comments" title="IRC"></i> ' + user.ircname + '<br>') : '') +
 

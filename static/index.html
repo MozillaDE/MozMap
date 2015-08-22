@@ -64,7 +64,7 @@
 					<div id="map-sidebar">
 						<div id="userlist-container">
 							<ul id="userlist">
-								<li ng-repeat="mozillian in mozillians | filter : mozFilter | orderBy : 'full_name || username'">
+								<li ng-repeat="mozillian in mozillians | filter: queryFilter | filter : precisionFilter | orderBy : 'full_name || username'">
 									<a ng-click="openPopup(mozillian)" href=""
 									   ng-class="mozillian === activeUser ? 'active' : ''"
 									   scroll-if="mozillian === activeUser">
@@ -81,15 +81,24 @@
 							<label><input type="checkbox" ng-model="settings.marker"> Marker gruppieren</label>
 							<label><input type="checkbox" ng-model="settings.irc"> IRC-Namen anzeigen</label-->
 
-							<h3>Filter</h3>
-							<label><input type="checkbox" ng-model="filter.city"> Stadt</label>
-							<label><input type="checkbox" ng-model="filter.region"> Bezirk</label>
-							<label><input type="checkbox" ng-model="filter.country"> Land</label>
-							<label><input type="checkbox" ng-model="filter.none"> Ohne Ortsangabe</label>
+							<h3 title="Damit ein Mozillian angezeigt wird, muss er in mindestens einer der angewählten Anfragen enthalten sein.">Anfragen</h3>
+							<label ng-repeat="query in queries">
+								<input type="checkbox" ng-model="filter[query.type][query.value]" ng-checked="query.default">
+								<i ng-if="query.type === 'country'" class="fa fa-fw fa-map-marker" title="Land"></i>
+								<i ng-if="query.type === 'group'" class="fa fa-fw fa-users" title="Gruppe"></i>
+								{{ query.value }}
+							</label>
+
+							<h3>Präzision</h3>
+							<label><input type="checkbox" ng-model="filter.precision.city"> Stadt</label>
+							<label><input type="checkbox" ng-model="filter.precision.region"> Bezirk</label>
+							<label><input type="checkbox" ng-model="filter.precision.country"> Land</label>
+							<label><input type="checkbox" ng-model="filter.precision.none"> Ohne Ortsangabe</label>
 
 							<div id="map-counter" ng-click="settingsOpened = !settingsOpened">
 								<i class="fa fa-cog"></i>
-								{{ (mozillians | filter: mozFilter).length + ' von ' + mozillians.length }} Mozillianern
+								{{ (mozillians | filter: queryFilter | filter: precisionFilter).length +
+									' von ' + (mozillians | filter: queryFilter).length }} Mozillianern
 							</div>
 						</div>
 
