@@ -34,23 +34,23 @@ angular.module('MozMap', [])
 		);
 	};
 
-	$scope.queryFilter = function (user) { // TODO: activate this as soon as server impl. is complete
-//		var i, type, value,
-//			len = $scope.queries.length;
-//
-//		for (i = 0; i < len; i++) {
-//			type = $scope.queries[i].type;
-//			value = $scope.queries[i].value;
-//
-//			if ($scope.filter[type][value] && ( // is filter checked?
-//				(type === 'country' && user.country === value) ||
-//				(type === 'group' && user.groups.indexOf($scope.filter.group[i]) !== -1)
-//			)) {
+	$scope.queryFilter = function (user) {
+		var i, type, value,
+			len = $scope.queries.length;
+
+		for (i = 0; i < len; i++) {
+			type = $scope.queries[i].type;
+			value = $scope.queries[i].value;
+debugger;
+			if ($scope.filter[type][value] && ( // tests if filter is checked
+				(type === 'country' && user.country === value) ||
+				(type === 'group' && user.groups.indexOf(value) !== -1)
+			)) {
 				return true;
-//			}
-//		}
-//
-//		return false;
+			}
+		}
+
+		return false;
 	};
 
 	$scope.openPopup = function (user) {
