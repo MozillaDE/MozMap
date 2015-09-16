@@ -80,6 +80,7 @@
 							<!--h3>Ansicht</h3>
 							<label><input type="checkbox" ng-model="settings.marker"> Marker gruppieren</label>
 							<label><input type="checkbox" ng-model="settings.irc"> IRC-Namen anzeigen</label-->
+							<label title="Nur geprüfte Mozillianer-Profile anzeigen."><input type="checkbox" ng-model="filter.vouched"> Nur gebürgt</label>
 
 							<h3 title="Damit ein Mozillian angezeigt wird, muss er in mindestens einer der angewählten Anfragen enthalten sein.">Anfragen</h3>
 							<label ng-repeat="query in queries">

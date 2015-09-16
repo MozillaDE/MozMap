@@ -15,6 +15,7 @@ angular.module('MozMap', [])
 
 	$scope.queries = [];
 	$scope.filter = {
+		vouched: true,
 		country: {},
 		group: {},
 		precision: {
@@ -38,10 +39,14 @@ angular.module('MozMap', [])
 		var i, type, value,
 			len = $scope.queries.length;
 
+		if ($scope.filter.vouched && !user.is_vouched) {
+			return false;
+		}
+
 		for (i = 0; i < len; i++) {
 			type = $scope.queries[i].type;
 			value = $scope.queries[i].value;
-debugger;
+
 			if ($scope.filter[type][value] && ( // tests if filter is checked
 				(type === 'country' && user.country === value) ||
 				(type === 'group' && user.groups.indexOf(value) !== -1)
