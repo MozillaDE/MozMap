@@ -20,7 +20,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.3",
-    "q": "^1.4.1"
+    "express": "^4.13.3"
   }
 }
