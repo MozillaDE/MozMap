@@ -170,10 +170,22 @@ angular.module('MozMap', [])
 })
 
 .directive('scrollIf', function () {
+	var mozilliansContainer = document.getElementById('userlist-container');
+
 	return function (scope, element, attrs) {
-		scope.$watch(attrs.scrollIf, function(value) {
+		scope.$watch(attrs.scrollIf, function (value) {
 			if (scope.$eval(attrs.scrollIf)) {
-				element[0].scrollIntoView({ behavior: 'smooth' });
+				var el = element[0],
+					elPos = el.offsetTop,
+					mcPos = mozilliansContainer.scrollTop,
+					upperEnd = 20,
+					lowerEnd = mozilliansContainer.offsetHeight - el.offsetHeight - 20;
+
+				if (elPos < mcPos + upperEnd) {
+					mozilliansContainer.scrollTop = el.offsetTop - upperEnd;
+				} else if (elPos > mcPos + lowerEnd) {
+					mozilliansContainer.scrollTop = el.offsetTop - lowerEnd;
+				}
 			}
 		});
 	}
