@@ -11,7 +11,6 @@ angular.module('MozMap', [])
 			country: '#c3a9a8'
 		},
 		filterExpressions = [
-			'settings.irc',
 			'filter.vouched',
 			'filter.precision.city',
 			'filter.precision.region',
@@ -106,13 +105,17 @@ angular.module('MozMap', [])
 
 			updateLayers();
 
-			$scope.$watchGroup(filterExpressions, function (oldVal, newVal) {
+			$scope.$watchGroup(filterExpressions, function () {
 				updateLayers();
+			});
+
+			$scope.$watch('settings.irc', function () {
+				updateLayers(true);
 			});
 		});
 	});
 
-	function updateLayers() {
+	function updateLayers(dontMove) {
 		featureLayer.clearLayers();
 
 		for (var i = 0; i < $scope.mozillians.length; i++) {
@@ -122,8 +125,12 @@ angular.module('MozMap', [])
 			}
 		}
 
-		if (featureLayer.getLayers().length > 0) {
+		if (!dontMove && featureLayer.getLayers().length > 0) {
 			map.fitBounds(featureLayer.getBounds());
+		}
+
+		if ($scope.activeUser) {
+			$scope.openPopup($scope.activeUser);
 		}
 	}
 
