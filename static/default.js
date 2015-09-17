@@ -122,7 +122,9 @@ angular.module('MozMap', [])
 			}
 		}
 
-		map.fitBounds(featureLayer.getBounds());
+		if (featureLayer.getLayers().length > 0) {
+			map.fitBounds(featureLayer.getBounds());
+		}
 	}
 
 	function addMarker(user) {
