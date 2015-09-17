@@ -5,6 +5,11 @@ angular.module('MozMap', [])
 
 	var featureLayer,
 		map,
+		colors = {
+			city: '#c13832',
+			region: '#c3716d',
+			country: '#c3a9a8'
+		},
 		filterExpressions = [
 			'filter.vouched',
 			'filter.precision.city',
@@ -92,7 +97,7 @@ angular.module('MozMap', [])
 
 			for (var i = 0; i < $scope.mozillians.length; i++) {
 				var user = $scope.mozillians[i];
-				user.location = createLocationString(user);
+				createLocationDetails(user);
 			}
 
 			featureLayer = new L.mapbox.featureLayer(); // L.MarkerClusterGroup(); breaks openPopup()
@@ -122,7 +127,7 @@ angular.module('MozMap', [])
 	function addMarker(user) {
 		user.marker = L.marker([user.map_data.center[1], user.map_data.center[0]], {
 				icon: L.mapbox.marker.icon({
-				  'marker-color': '#C13832'
+					'marker-color': colors[user.locationAccuracy]
 				})
 			})
 			.bindPopup(getPopUpHTML(user))
@@ -168,7 +173,7 @@ angular.module('MozMap', [])
 			'<div style="clear:both"></div>');
 	}
 
-	function createLocationString(user) {
+	function createLocationDetails(user) {
 		var location = [];
 
 		if (user.city) {
@@ -181,7 +186,15 @@ angular.module('MozMap', [])
 			location.push(user.country);
 		}
 
-		return location.join(', ');
+		user.location = location.join(', ');
+
+		if (user.city) {
+			user.locationAccuracy = 'city';
+		} else if (user.region) {
+			user.locationAccuracy = 'region';
+		} else if (user.country) {
+			user.locationAccuracy = 'country';
+		}
 	}
 
 })
