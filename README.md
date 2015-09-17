@@ -6,6 +6,7 @@ To be able to start the server you have to create a `config.json` file.
 {
 	"mozillians_api_key": "-your-key-here-",
 	"mapbox_access_token": "-your-token-here-",
+	"server_port": 3000,
 	"local_updates_only": true,
 	"min_delay": 3600000,
 	"queries": [
