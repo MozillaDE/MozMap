@@ -117,46 +117,65 @@
 
 
 #map-settings {
-	background: #eee;
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	width: 170px;
-	height: 30px;
 	min-height: 30px;
+	max-height: 100%;
 	box-sizing: border-box;
-	overflow: hidden;
 }
+
+#map-settings-filter {
+	position: absolute;
+	bottom: 30px;
+	left: 0;
+	width: 100%;
+	background: #e5e5e5;
+	padding: 8px 10px 8px 10px;
+	box-sizing: border-box;
+	overflow: auto;
+	display: none;
+}
+#map-settings:hover #map-settings-filter {
+	display: block;
+}
+
+#map-settings-counter {
+	padding: 0 10px;
+	background: #e5e5e5;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	font-size: 12px;
+	line-height: 30px;
+	height: 30px;
+	box-sizing: border-box;
+	cursor: default;
+}
+#map-settings-counter .fa-cog {
+	float: right;
+	line-height: 30px;
+	transform-origin: center;
+	animation: settings-highlight 1s ease-in-out;
+	animation-delay: 2s;
+	animation-fill-mode: forwards;
+}
+@keyframes settings-highlight {
+	from { transform: rotate(0deg) scale(1); }
+	50%  { transform: rotate(180deg) scale(1.5); }
+	to   { transform: rotate(360deg) scale(1); }
+}
+
 #map-settings h3 {
 	padding-top: 16px;
 }
 #map-settings h3:first-child {
 	padding-top: 0;
 }
-#map-settings:hover {
-	padding: 6px 10px 34px 10px;
-	height: auto;
-}
 #map-settings label {
 	cursor: pointer;
-}
-
-#map-counter {
-	padding: 0 10px;
-	background: #eee;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 170px;
-	font-size: 12px;
-	line-height: 30px;
-	height: 30px;
-	box-sizing: border-box;
-}
-#map-counter .fa-cog {
-	float: right;
-	line-height: 30px;
-	cursor: default;
 }
 
 .leaflet-left {
@@ -202,15 +221,6 @@
 		margin-left: 0;
 	}
 
-	#map-settings:hover {
-		padding: 0;
-		height: 30px;
-	}
-	#map-settings.opened {
-		padding: 6px 10px 34px 10px;
-		height: auto;
-	}
-
 	#map-sidebar {
 		float: none;
 		width: auto;
@@ -219,6 +229,7 @@
 		background: #fff;
 		margin-bottom: 20px;
 	}
+
 	#userlist-container,
 	#userlist {
 		width: auto;
@@ -232,12 +243,23 @@
 		display: none;
 	}
 
-	#map-settings,
-	#map-counter {
+	#map-settings {
 		width: 100%;
 	}
-	#map-counter,
-	#map-counter .fa {
+	#map-settings.opened {
+		height: 220px;
+	}
+
+	#map-settings:hover #map-settings-filter {
+		display: none;
+	}
+	#map-settings.opened #map-settings-filter {
+		display: block;
+		top: 0;
+	}
+
+	#map-settings-counter,
+	#map-settings-counter .fa {
 		cursor: pointer;
 	}
 }

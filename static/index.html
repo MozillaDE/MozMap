@@ -77,30 +77,33 @@
 
 						<div id="map-settings" ng-class="settingsOpened ? 'opened' : ''" ng-init="settingsOpened = false">
 
-							<!--h3>Ansicht</h3>
-							<label><input type="checkbox" ng-model="settings.marker"> Marker gruppieren</label>
-							<label><input type="checkbox" ng-model="settings.irc"> IRC-Namen anzeigen</label-->
-							<label title="Nur geprüfte Mozillianer-Profile anzeigen."><input type="checkbox" ng-model="filter.vouched"> Nur gebürgt</label>
+							<div id="map-settings-filter">
+								<!--h3>Ansicht</h3>
+								<label><input type="checkbox" ng-model="settings.marker"> Marker gruppieren</label>
+								<label><input type="checkbox" ng-model="settings.irc"> IRC-Namen anzeigen</label-->
+								<label title="Nur geprüfte Mozillianer-Profile anzeigen."><input type="checkbox" ng-model="filter.vouched"> Nur gebürgt</label>
 
-							<h3 title="Damit ein Mozillian angezeigt wird, muss er in mindestens einer der angewählten Anfragen enthalten sein.">Anfragen</h3>
-							<label ng-repeat="query in queries">
-								<input type="checkbox" ng-model="filter[query.type][query.value]" ng-checked="query.default">
-								<i ng-if="query.type === 'country'" class="fa fa-fw fa-map-marker" title="Land"></i>
-								<i ng-if="query.type === 'group'" class="fa fa-fw fa-users" title="Gruppe"></i>
-								{{ query.value }}
-							</label>
+								<h3 title="Damit ein Mozillian angezeigt wird, muss er in mindestens einer der angewählten Anfragen enthalten sein.">Anfragen</h3>
+								<label ng-repeat="query in queries">
+									<input type="checkbox" ng-model="filter[query.type][query.value]" ng-checked="query.default">
+									<i ng-if="query.type === 'country'" class="fa fa-fw fa-map-marker" title="Land"></i>
+									<i ng-if="query.type === 'group'" class="fa fa-fw fa-users" title="Gruppe"></i>
+									{{ query.value }}
+								</label>
 
-							<h3>Präzision</h3>
-							<label><input type="checkbox" ng-model="filter.precision.city"> Stadt</label>
-							<label><input type="checkbox" ng-model="filter.precision.region"> Bezirk</label>
-							<label><input type="checkbox" ng-model="filter.precision.country"> Land</label>
-							<label><input type="checkbox" ng-model="filter.precision.none"> Ohne Ortsangabe</label>
+								<h3>Präzision</h3>
+								<label><input type="checkbox" ng-model="filter.precision.city"> Stadt</label>
+								<label><input type="checkbox" ng-model="filter.precision.region"> Bezirk</label>
+								<label><input type="checkbox" ng-model="filter.precision.country"> Land</label>
+								<label><input type="checkbox" ng-model="filter.precision.none"> Ohne Ortsangabe</label>
+							</div>
 
-							<div id="map-counter" ng-click="settingsOpened = !settingsOpened">
+							<div id="map-settings-counter" ng-click="settingsOpened = !settingsOpened">
 								<i class="fa fa-cog"></i>
 								{{ (mozillians | filter: queryFilter | filter: precisionFilter).length +
 									' von ' + (mozillians | filter: queryFilter).length }} Mozillianern
 							</div>
+
 						</div>
 
 					</div>
