@@ -182,9 +182,9 @@ angular.module('MozMap', [])
 					lowerEnd = mozilliansContainer.offsetHeight - el.offsetHeight - 20;
 
 				if (elPos < mcPos + upperEnd) {
-					mozilliansContainer.scrollTop = el.offsetTop - upperEnd;
+					$(mozilliansContainer).animate({ scrollTop: el.offsetTop - upperEnd });
 				} else if (elPos > mcPos + lowerEnd) {
-					mozilliansContainer.scrollTop = el.offsetTop - lowerEnd;
+					$(mozilliansContainer).animate({ scrollTop: el.offsetTop - lowerEnd });
 				}
 			}
 		});
