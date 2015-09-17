@@ -11,6 +11,7 @@ angular.module('MozMap', [])
 			country: '#c3a9a8'
 		},
 		filterExpressions = [
+			'settings.irc',
 			'filter.vouched',
 			'filter.precision.city',
 			'filter.precision.region',
@@ -100,7 +101,7 @@ angular.module('MozMap', [])
 				createLocationDetails(user);
 			}
 
-			featureLayer = new L.mapbox.featureLayer(); // L.MarkerClusterGroup(); breaks openPopup()
+			featureLayer = new L.mapbox.featureLayer();
 			featureLayer.addTo(map);
 
 			updateLayers();
@@ -156,7 +157,6 @@ angular.module('MozMap', [])
 					'<br>' +
 
 					// irc
-					// TODO update view on settings change
 					($scope.settings.irc && user.ircname
 					    ? ('<i class="fa fa-fw fa-comments" title="IRC"></i> ' + user.ircname + '<br>') : '') +
 
