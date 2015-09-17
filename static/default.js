@@ -4,7 +4,14 @@ angular.module('MozMap', [])
 .controller('MozMapController', function ($scope, $http) {
 
 	var featureLayer,
-		map;
+		map,
+		filterExpressions = [
+			'filter.vouched',
+			'filter.precision.city',
+			'filter.precision.region',
+			'filter.precision.country',
+			'filter.precision.none'
+		];
 
 	$scope.mozillians = [];
 	$scope.activeUser = null;
@@ -72,11 +79,11 @@ angular.module('MozMap', [])
 		L.mapbox.accessToken = res.data.mapbox_access_token;
 
 		map = L.mapbox.map('map', 'mapbox.streets');
-		featureLayer = new L.mapbox.featureLayer(); // L.MarkerClusterGroup(); breaks openPopup()
 
 		$scope.queries = res.data.queries;
 		angular.forEach($scope.queries, function (query) {
 			$scope.filter[query.type][query.value] = query.default;
+			filterExpressions.push('filter.' + query.type + '["' + query.value + '"]');
 		});
 
 		$http.get('./mozillians.json').then(function (res) {
@@ -84,24 +91,35 @@ angular.module('MozMap', [])
 			$scope.mozillians = res.data;
 
 			for (var i = 0; i < $scope.mozillians.length; i++) {
-
 				var user = $scope.mozillians[i];
-
 				user.location = createLocationString(user);
-
-				if (user.map_data) {
-					addMarker(user);
-				}
 			}
 
+			featureLayer = new L.mapbox.featureLayer(); // L.MarkerClusterGroup(); breaks openPopup()
 			featureLayer.addTo(map);
 
-			map.fitBounds(featureLayer.getBounds());
+			updateLayers();
+
+			$scope.$watchGroup(filterExpressions, function (oldVal, newVal) {
+				updateLayers();
+			});
 		});
 	});
 
+	function updateLayers() {
+		featureLayer.clearLayers();
+
+		for (var i = 0; i < $scope.mozillians.length; i++) {
+			var user = $scope.mozillians[i];
+			if (user.map_data && $scope.precisionFilter(user) && $scope.queryFilter(user)) {
+				addMarker(user);
+			}
+		}
+
+		map.fitBounds(featureLayer.getBounds());
+	}
+
 	function addMarker(user) {
-		
 		user.marker = L.marker([user.map_data.center[1], user.map_data.center[0]], {
 				icon: L.mapbox.marker.icon({
 				  'marker-color': '#C13832'
@@ -113,7 +131,6 @@ angular.module('MozMap', [])
 				$scope.activeUser = user;
 				$scope.$apply();
 			});
-		
 	}
 
 	function getPopUpHTML(user) {
