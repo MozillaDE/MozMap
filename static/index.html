@@ -1,163 +1,163 @@
 <!DOCTYPE html>
 <html ng-app="MozMap" lang="de">
-	<head>
+    <head>
 
-		<meta charset="utf-8">
+        <meta charset="utf-8">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>mozilla.de - MozMap - Karte der deutschsprachigen Mozilla-Community</title>
-		<meta name="description" content="">
+        <title>mozilla.de - MozMap - Karte der deutschsprachigen Mozilla-Community</title>
+        <meta name="description" content="">
 
-		<link rel="shortcut icon" sizes="16x16" href="favicon.ico">
+        <link rel="shortcut icon" sizes="16x16" href="favicon.ico">
 
-		<link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
-		<link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
-		<link rel="stylesheet" href="mozilla-de.css">
-		<link rel="stylesheet" href="default.css">
+        <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
+        <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
+        <link rel="stylesheet" href="mozilla-de.css">
+        <link rel="stylesheet" href="default.css">
 
-		<!-- Tabzilla intergration -->
-		<link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
-		<script src="https://mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
+        <!-- Tabzilla intergration -->
+        <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+        <script src="https://mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-		<script src="https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js"></script>
-		<script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
-		<script src="default.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+        <script src="https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js"></script>
+        <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
+        <script src="default.js"></script>
 
-	</head>
-	<body>
-		<header id="masthead">
-			<div class="container">
-				<a href="/" id="tabzilla" aria-label="Mozilla links">Mozilla</a>
-				<nav id="nav-main" role="navigation">
-					<ul id="nav-main-menu">
-						<li class="first"><a href="https://sendto.mozilla.org/page/contribute/">Spenden</a></li>
-						<li><a href="https://www.mozilla.org/mission">Mission</a></li>
-						<li><a href="https://support.mozilla.org/">Hilfe</a></li>
-						<li class="last"><a href="https://www.mozilla.org/">mozilla.org</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-		<main role="main">
+    </head>
+    <body>
+        <header id="masthead">
+            <div class="container">
+                <a href="/" id="tabzilla" aria-label="Mozilla links">Mozilla</a>
+                <nav id="nav-main" role="navigation">
+                    <ul id="nav-main-menu">
+                        <li class="first"><a href="https://sendto.mozilla.org/page/contribute/">Spenden</a></li>
+                        <li><a href="https://www.mozilla.org/mission">Mission</a></li>
+                        <li><a href="https://support.mozilla.org/">Hilfe</a></li>
+                        <li class="last"><a href="https://www.mozilla.org/">mozilla.org</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main role="main">
 
-			<header class="main-header">
-				<div class="container"></div>
-			</header>
+            <header class="main-header">
+                <div class="container"></div>
+            </header>
 
-			<section class="module" id="section-intro">
-				<div class="container">
-					<h1 class="page-title">Mozillianer á la Carte</h1>
+            <section class="module" id="section-intro">
+                <div class="container">
+                    <h1 class="page-title">Mozillianer á la Carte</h1>
 
-					<h3>Willkommen bei der &bdquo;MozMap&rdquo;!</h3>
-					<p>
-						Wo gibt es deutschsprachige Mozillianer in meiner Umgebung? Für Fragen wie diese gibt es ab sofort unsere interaktive Karte mit Mozillianern aus der <a href="http://www.mozilla.de/">deutschsprachigen Mozilla-Community</a>. Die Karte soll uns beim Organisieren von Events und anderen Treffen unterstützen.</p>
-				</div>
-			</section>
+                    <h3>Willkommen bei der &bdquo;MozMap&rdquo;!</h3>
+                    <p>
+                        Wo gibt es deutschsprachige Mozillianer in meiner Umgebung? Für Fragen wie diese gibt es ab sofort unsere interaktive Karte mit Mozillianern aus der <a href="http://www.mozilla.de/">deutschsprachigen Mozilla-Community</a>. Die Karte soll uns beim Organisieren von Events und anderen Treffen unterstützen.</p>
+                </div>
+            </section>
 
-			<section class="module" id="section-map" ng-controller="MozMapController">
-				<div class="container">
+            <section class="module" id="section-map" ng-controller="MozMapController">
+                <div class="container">
 
-					<div id="map-sidebar">
-						<div id="userlist-container">
-							<ul id="userlist">
-								<li ng-repeat="mozillian in mozillians | filter: queryFilter | filter : precisionFilter | orderBy : 'full_name || username'">
-									<a ng-click="openPopup(mozillian)" href=""
-									   ng-class="mozillian === activeUser ? 'active' : ''"
-									   scroll-if="mozillian === activeUser">
-										<b>{{ mozillian.full_name || mozillian.username }}</b>
-										<i ng-if="!mozillian.map_data" class="fa fa-map-marker"></i><i ng-if="!mozillian.map_data" class="fa fa-times"></i>
-									</a>
-								</li>
-							</ul>
-						</div>
+                    <div id="map-sidebar">
+                        <div id="userlist-container">
+                            <ul id="userlist">
+                                <li ng-repeat="mozillian in mozillians | filter: queryFilter | filter : precisionFilter | orderBy : 'full_name || username'">
+                                    <a ng-click="openPopup(mozillian)" href=""
+                                       ng-class="mozillian === activeUser ? 'active' : ''"
+                                       scroll-if="mozillian === activeUser">
+                                        <b>{{ mozillian.full_name || mozillian.username }}</b>
+                                        <i ng-if="!mozillian.map_data" class="fa fa-map-marker"></i><i ng-if="!mozillian.map_data" class="fa fa-times"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
-						<div id="map-settings" ng-class="settingsOpened ? 'opened' : ''" ng-init="settingsOpened = false">
+                        <div id="map-settings" ng-class="settingsOpened ? 'opened' : ''" ng-init="settingsOpened = false">
 
-							<div id="map-settings-filter">
-								<h3 title="Damit ein Mozillian angezeigt wird, muss er in mindestens einer der angewählten Anfragen enthalten sein.">Anfragen</h3>
-								<label ng-repeat="query in queries">
-									<input type="checkbox" ng-model="filter[query.type][query.value]" ng-checked="query.default">
-									<i ng-if="query.type === 'country'" class="fa fa-fw fa-map-marker" title="Land"></i>
-									<i ng-if="query.type === 'group'" class="fa fa-fw fa-users" title="Gruppe"></i>
-									{{ query.value }}
-								</label>
+                            <div id="map-settings-filter">
+                                <h3 title="Damit ein Mozillian angezeigt wird, muss er in mindestens einer der angewählten Anfragen enthalten sein.">Anfragen</h3>
+                                <label ng-repeat="query in queries">
+                                    <input type="checkbox" ng-model="filter[query.type][query.value]" ng-checked="query.default">
+                                    <i ng-if="query.type === 'country'" class="fa fa-fw fa-map-marker" title="Land"></i>
+                                    <i ng-if="query.type === 'group'" class="fa fa-fw fa-users" title="Gruppe"></i>
+                                    {{ query.value }}
+                                </label>
 
-								<h3>Präzision</h3>
-								<label><input type="checkbox" ng-model="filter.precision.city"> Stadt</label>
-								<label><input type="checkbox" ng-model="filter.precision.region"> Bezirk</label>
-								<label><input type="checkbox" ng-model="filter.precision.country"> Land</label>
-								<label><input type="checkbox" ng-model="filter.precision.none"> Ohne Ortsangabe</label>
+                                <h3>Präzision</h3>
+                                <label><input type="checkbox" ng-model="filter.precision.city"> Stadt</label>
+                                <label><input type="checkbox" ng-model="filter.precision.region"> Bezirk</label>
+                                <label><input type="checkbox" ng-model="filter.precision.country"> Land</label>
+                                <label><input type="checkbox" ng-model="filter.precision.none"> Ohne Ortsangabe</label>
 
-								<h3>Mehr</h3>
-								<label><input type="checkbox" ng-model="settings.irc"> IRC-Name zeigen</label>
-								<label title="Nur geprüfte Mozillianer-Profile anzeigen."><input type="checkbox" ng-model="filter.vouched"> Nur gebürgt</label>
-							</div>
+                                <h3>Mehr</h3>
+                                <label><input type="checkbox" ng-model="settings.irc"> IRC-Name zeigen</label>
+                                <label title="Nur geprüfte Mozillianer-Profile anzeigen."><input type="checkbox" ng-model="filter.vouched"> Nur gebürgt</label>
+                            </div>
 
-							<div id="map-settings-counter" ng-click="settingsOpened = !settingsOpened">
-								<i class="fa fa-cog"></i>
-								{{ (mozillians | filter: queryFilter | filter: precisionFilter).length +
-									' von ' + (mozillians | filter: queryFilter).length }} Mozillianern
-							</div>
+                            <div id="map-settings-counter" ng-click="settingsOpened = !settingsOpened">
+                                <i class="fa fa-cog"></i>
+                                {{ (mozillians | filter: queryFilter | filter: precisionFilter).length +
+                                    ' von ' + (mozillians | filter: queryFilter).length }} Mozillianern
+                            </div>
 
-						</div>
+                        </div>
 
-					</div>
+                    </div>
 
-					<div id="map-container">
-						<div id="map"></div>
-					</div>
+                    <div id="map-container">
+                        <div id="map"></div>
+                    </div>
 
-				</div>
-			</section>
+                </div>
+            </section>
 
-			<section class="module" id="section-info">
-				<div class="container">
-					<h3>Hinweis zu den dargestellten Daten</h3>
-					<p>Bitte beachte, dass nicht alle Mozillianer ihren Standort öffentlich angegeben haben. Aus diesem Grund zeigt die Karte auch nur einen Teil der deutschsprachingen Mozilla-Community. Die zur Verfügung stehenden Standorte sind teilweise nur auf das Land oder einen Bezirk eingegrenzt oder verweisen auf eine größere Nachbarstadt. Die Daten entstammen dem <a href="https://mozillians.org/">Mozillianer</a>-Verzeichnis.</p>
+            <section class="module" id="section-info">
+                <div class="container">
+                    <h3>Hinweis zu den dargestellten Daten</h3>
+                    <p>Bitte beachte, dass nicht alle Mozillianer ihren Standort öffentlich angegeben haben. Aus diesem Grund zeigt die Karte auch nur einen Teil der deutschsprachingen Mozilla-Community. Die zur Verfügung stehenden Standorte sind teilweise nur auf das Land oder einen Bezirk eingegrenzt oder verweisen auf eine größere Nachbarstadt. Die Daten entstammen dem <a href="https://mozillians.org/">Mozillianer</a>-Verzeichnis.</p>
 
-					<h3>Ich bin Mozillianer, wie komme ich auf diese Karte?</h3>
-					<p>Um auf der Karte zu erscheinen musst du der Gruppe &bdquo;<a href="https://mozillians.org/de/group/decommunity/">de:community</a>&rdquo; beitreten. Anschließend solltest du noch überprüfen, ob du deinen Standort angegeben hast und deine Privatsphäreeinstellungen den Zugriff erlauben. Die Karten werden automatisiert in regelmäßigen Abständen aktualisiert.</p>
-				</div>
-			</section>
+                    <h3>Ich bin Mozillianer, wie komme ich auf diese Karte?</h3>
+                    <p>Um auf der Karte zu erscheinen musst du der Gruppe &bdquo;<a href="https://mozillians.org/de/group/decommunity/">de:community</a>&rdquo; beitreten. Anschließend solltest du noch überprüfen, ob du deinen Standort angegeben hast und deine Privatsphäreeinstellungen den Zugriff erlauben. Die Karten werden automatisiert in regelmäßigen Abständen aktualisiert.</p>
+                </div>
+            </section>
 
-		</main>
-		<footer id="colophon">
-			<nav class="row">
-				<div class="col col-1">
-					<h1 class="logo"><a href="https://www.mozilla.org/"></a></h1>
-					<p class="license">Teile dieses Inhalts stehen unter einem ©1998–2015 von einzelnen Mitwirkenden an mozilla.org. Der Inhalt steht unter einer <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative-Commons-Lizenz</a>.</p>
-				</div>
-				<div class="col col-2">
-					<ul class="links-join">
-						<li><a href="https://www.mozilla.org/contact/spaces/">Kontakt</a></li>
-						<li class="wrap"><a href="https://www.mozilla.org/about/partnerships/">Werden Sie Partner</a></li>
-						<li class="clear"><a href="https://sendto.mozilla.org/page/contribute/" class="donate">Spenden</a></li>
-						<li class="wrap"><a href="https://www.mozilla.org/contribute/friends/">Firefox Friends</a></li>
-						<li class="clear"><a href="https://github.com/MozillaDE/MozMap">Zu dieser Website beitragen</a></li>
-					</ul>
-					<ul class="links-legal">
-						<li><a href="https://www.mozilla.org/privacy/">Datenschutz</a></li>
-						<li class="wrap"><a href="https://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
-						<li class="wrap"><a href="https://www.mozilla.org/about/legal/">Rechtliches</a></li>
-						<li class="clear"><a href="https://www.mozilla.org/about/legal/fraud-report/">Markenrechtsverletzung melden</a></li>
-					</ul>
-				</div>
-				<div class="col col-3">
-					<ul class="links-social">
-						<li>
-							<ul>
-							  <li class="clear"><a id="twitterLink" href="https://twitter.com/mozilla_deutsch">Twitter<span> (@mozilla_deutsch)</span></a></li>
-							  <li class="clear"><a id="facebookLink" href="https://www.facebook.com/mozilla.de">Facebook<span> (mozilla.de)</span></a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</nav>
-		</footer>
-	</body>
+        </main>
+        <footer id="colophon">
+            <nav class="row">
+                <div class="col col-1">
+                    <h1 class="logo"><a href="https://www.mozilla.org/"></a></h1>
+                    <p class="license">Teile dieses Inhalts stehen unter einem ©1998–2015 von einzelnen Mitwirkenden an mozilla.org. Der Inhalt steht unter einer <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative-Commons-Lizenz</a>.</p>
+                </div>
+                <div class="col col-2">
+                    <ul class="links-join">
+                        <li><a href="https://www.mozilla.org/contact/spaces/">Kontakt</a></li>
+                        <li class="wrap"><a href="https://www.mozilla.org/about/partnerships/">Werden Sie Partner</a></li>
+                        <li class="clear"><a href="https://sendto.mozilla.org/page/contribute/" class="donate">Spenden</a></li>
+                        <li class="wrap"><a href="https://www.mozilla.org/contribute/friends/">Firefox Friends</a></li>
+                        <li class="clear"><a href="https://github.com/MozillaDE/MozMap">Zu dieser Website beitragen</a></li>
+                    </ul>
+                    <ul class="links-legal">
+                        <li><a href="https://www.mozilla.org/privacy/">Datenschutz</a></li>
+                        <li class="wrap"><a href="https://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+                        <li class="wrap"><a href="https://www.mozilla.org/about/legal/">Rechtliches</a></li>
+                        <li class="clear"><a href="https://www.mozilla.org/about/legal/fraud-report/">Markenrechtsverletzung melden</a></li>
+                    </ul>
+                </div>
+                <div class="col col-3">
+                    <ul class="links-social">
+                        <li>
+                            <ul>
+                              <li class="clear"><a id="twitterLink" href="https://twitter.com/mozilla_deutsch">Twitter<span> (@mozilla_deutsch)</span></a></li>
+                              <li class="clear"><a id="facebookLink" href="https://www.facebook.com/mozilla.de">Facebook<span> (mozilla.de)</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </footer>
+    </body>
 </html>

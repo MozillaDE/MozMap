@@ -14,21 +14,21 @@ To be able to start the server you have to create a `config.json` file. Please m
 
 ```json
 {
-	"mozillians_api_key": "-your-key-here-",
-	"mapbox_access_token": "-your-token-here-",
-	"server_port": 3000,
-	"local_updates_only": true,
-	"min_delay": 3600000,
-	"queries": [
-		{ "type": "group",   "value": "de:community", "default": true  },
-		{ "type": "country", "value": "Germany",      "default": true  },
-		{ "type": "country", "value": "Austria",      "default": true  },
-		{ "type": "country", "value": "Switzerland",  "default": true  },
-		{ "type": "group",   "value": "german",       "default": false },
-		{ "type": "group",   "value": "austrian",     "default": false },
-		{ "type": "group",   "value": "switzerland",  "default": false },
-		{ "type": "group",   "value": "speaks:de",    "default": false }
-	]
+    "mozillians_api_key": "-your-key-here-",
+    "mapbox_access_token": "-your-token-here-",
+    "server_port": 3000,
+    "local_updates_only": true,
+    "min_delay": 3600000,
+    "queries": [
+        { "type": "group",   "value": "de:community", "default": true  },
+        { "type": "country", "value": "Germany",      "default": true  },
+        { "type": "country", "value": "Austria",      "default": true  },
+        { "type": "country", "value": "Switzerland",  "default": true  },
+        { "type": "group",   "value": "german",       "default": false },
+        { "type": "group",   "value": "austrian",     "default": false },
+        { "type": "group",   "value": "switzerland",  "default": false },
+        { "type": "group",   "value": "speaks:de",    "default": false }
+    ]
 }
 ```
 

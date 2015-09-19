@@ -1,193 +1,193 @@
 #map {
-	width: 790px;
-	height: 550px;
+    width: 790px;
+    height: 550px;
 }
 
 #map .leaflet-popup-content {
-	padding: 10px;
-	line-height: 18px;
+    padding: 10px;
+    line-height: 18px;
 }
 #map .fa-check {
-	color: #D7D3C8;
+    color: #D7D3C8;
 }
 #map .fa-exclamation-circle {
-	color: #C13832;
-	cursor: help;
+    color: #C13832;
+    cursor: help;
 }
 #map .popup_main {
-	width: 230px;
+    width: 230px;
 }
 #map .text_info {
-	float: right;
-	width: 170px;
+    float: right;
+    width: 170px;
 }
 #map .leaflet-popup-content img {
-	float: left;
-	background: #ddd;
+    float: left;
+    background: #ddd;
 }
 
 #map-sidebar {
-	width: 200px;
-	height: 550px;
-	float: left;
-	overflow: hidden;
-	margin-right: -30px;
-	position: relative;
+    width: 200px;
+    height: 550px;
+    float: left;
+    overflow: hidden;
+    margin-right: -30px;
+    position: relative;
 }
 #map-sidebar label {
-	display: block;
+    display: block;
 }
 
 #userlist-container {
-	width: 220px;
-	height: 520px;
-	overflow: auto;
+    width: 220px;
+    height: 520px;
+    overflow: auto;
 }
 #userlist {
-	width: 170px;
-	min-height: 100%;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	background: #fff;
+    width: 170px;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #fff;
 }
 #userlist li {
-	display: block;
-	border-bottom: 1px solid #eee;
-	padding: 0;
-	margin: 0;
+    display: block;
+    border-bottom: 1px solid #eee;
+    padding: 0;
+    margin: 0;
 }
 #userlist li:last-child {
-	border-bottom: 0;
+    border-bottom: 0;
 }
 #userlist a {
-	display: block;
-	padding: 10px;
-	margin: 0;
-	position: relative;
-	overflow: visible;
-	color: #333;
+    display: block;
+    padding: 10px;
+    margin: 0;
+    position: relative;
+    overflow: visible;
+    color: #333;
 }
 #userlist a:hover,
 #userlist a:focus,
 #userlist a:active {
-	background: rgba(0, 0, 0, .15);
-	outline: none;
+    background: rgba(0, 0, 0, .15);
+    outline: none;
 }
 #userlist a.active {
-	background: #C13832;
-	color: #fff;
+    background: #C13832;
+    color: #fff;
 }
 #userlist a:hover::after,
 #userlist a:focus::after,
 #userlist a:active::after,
 #userlist a.active::after {
-	content: " ";
-	width: 0; 
-	height: 0; 
-	border-top: 21px solid transparent;
-	border-bottom: 21px solid transparent; 
-	border-left: 21px solid rgba(0, 0, 0, .15);
-	display: block;
-	position: absolute;
-	right: -21px;
-	top: 0;
-	z-index: 10;
+    content: " ";
+    width: 0; 
+    height: 0; 
+    border-top: 21px solid transparent;
+    border-bottom: 21px solid transparent; 
+    border-left: 21px solid rgba(0, 0, 0, .15);
+    display: block;
+    position: absolute;
+    right: -21px;
+    top: 0;
+    z-index: 10;
 }
 #userlist a.active::after {
-	border-left-color: #C13832;
+    border-left-color: #C13832;
 }
 
 #userlist .fa {
-	color: rgba(51, 51, 51, .5);
+    color: rgba(51, 51, 51, .5);
 }
 #userlist .fa-map-marker {
-	padding-left: 4px;
+    padding-left: 4px;
 }
 #userlist .fa-times {
-	color: #C13832;
-	margin-left: -4px;
-	font-size: 10px;
-	position: relative;
-	top: 3px;
+    color: #C13832;
+    margin-left: -4px;
+    font-size: 10px;
+    position: relative;
+    top: 3px;
 }
 #userlist .active .fa {
-	color: #fff;
+    color: #fff;
 }
 
 
 #map-settings {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 170px;
-	min-height: 30px;
-	max-height: 100%;
-	box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 170px;
+    min-height: 30px;
+    max-height: 100%;
+    box-sizing: border-box;
 }
 
 #map-settings-filter {
-	position: absolute;
-	bottom: 30px;
-	left: 0;
-	width: 100%;
-	background: #e5e5e5;
-	padding: 8px 10px 8px 10px;
-	box-sizing: border-box;
-	overflow: auto;
-	display: none;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    background: #e5e5e5;
+    padding: 8px 10px 8px 10px;
+    box-sizing: border-box;
+    overflow: auto;
+    display: none;
 }
 #map-settings:hover #map-settings-filter {
-	display: block;
+    display: block;
 }
 
 #map-settings-counter {
-	padding: 0 10px;
-	background: #e5e5e5;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	font-size: 12px;
-	line-height: 30px;
-	height: 30px;
-	box-sizing: border-box;
-	cursor: default;
+    padding: 0 10px;
+    background: #e5e5e5;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 12px;
+    line-height: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    cursor: default;
 }
 #map-settings-counter .fa-cog {
-	float: right;
-	line-height: 30px;
-	transform-origin: center;
-	animation: settings-highlight 1s ease-in-out;
-	animation-delay: 2s;
-	animation-fill-mode: forwards;
+    float: right;
+    line-height: 30px;
+    transform-origin: center;
+    animation: settings-highlight 1s ease-in-out;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
 }
 @keyframes settings-highlight {
-	from { transform: rotate(0deg) scale(1); }
-	50%  { transform: rotate(180deg) scale(1.5); }
-	to   { transform: rotate(360deg) scale(1); }
+    from { transform: rotate(0deg) scale(1); }
+    50%  { transform: rotate(180deg) scale(1.5); }
+    to   { transform: rotate(360deg) scale(1); }
 }
 
 #map-settings h3 {
-	padding-top: 16px;
+    padding-top: 16px;
 }
 #map-settings h3:first-child {
-	padding-top: 0;
+    padding-top: 0;
 }
 #map-settings label {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .leaflet-left {
-	left: auto;
+    left: auto;
     right: 10px;
 }
 
 /* mozilla-de */
 #section-intro {
-	padding-top: 3em;
-	background-color: #F6F4EC;
-	padding-bottom: 10px;
+    padding-top: 3em;
+    background-color: #F6F4EC;
+    padding-bottom: 10px;
 }
 #section-info p,
 #section-intro p {
@@ -199,72 +199,72 @@
 }
 
 @media (max-width: 1100px) {
-	#map {
-		width: 100%;
-		padding-left: 170px;
-		box-sizing: border-box;
-	}
-	#map-container {
-		margin-left: 170px;
-	}
+    #map {
+        width: 100%;
+        padding-left: 170px;
+        box-sizing: border-box;
+    }
+    #map-container {
+        margin-left: 170px;
+    }
 }
 @media (min-width: 601px) {
-	#userlist-container::-webkit-scrollbar {
-		display: none;
-	}
+    #userlist-container::-webkit-scrollbar {
+        display: none;
+    }
 }
 @media (max-width: 600px) {
-	#map {
-		height: 400px;
-	}
-	#map-container {
-		margin-left: 0;
-	}
+    #map {
+        height: 400px;
+    }
+    #map-container {
+        margin-left: 0;
+    }
 
-	#map-sidebar {
-		float: none;
-		width: auto;
-		margin: 0;
-		height: 220px;
-		background: #fff;
-		margin-bottom: 20px;
-	}
+    #map-sidebar {
+        float: none;
+        width: auto;
+        margin: 0;
+        height: 220px;
+        background: #fff;
+        margin-bottom: 20px;
+    }
 
-	#userlist-container,
-	#userlist {
-		width: auto;
-		height: 190px;
-	}
-	#userlist a:hover::after,
-	#userlist a:focus::after,
-	#userlist a:active::after,
-	#userlist a.active::after {
-		content: none;
-		display: none;
-	}
+    #userlist-container,
+    #userlist {
+        width: auto;
+        height: 190px;
+    }
+    #userlist a:hover::after,
+    #userlist a:focus::after,
+    #userlist a:active::after,
+    #userlist a.active::after {
+        content: none;
+        display: none;
+    }
 
-	#map-settings {
-		width: 100%;
-	}
-	#map-settings.opened {
-		height: 220px;
-	}
+    #map-settings {
+        width: 100%;
+    }
+    #map-settings.opened {
+        height: 220px;
+    }
 
-	#map-settings:hover #map-settings-filter {
-		display: none;
-	}
-	#map-settings.opened #map-settings-filter {
-		display: block;
-		top: 0;
-	}
+    #map-settings:hover #map-settings-filter {
+        display: none;
+    }
+    #map-settings.opened #map-settings-filter {
+        display: block;
+        top: 0;
+    }
 
-	#map-settings-counter,
-	#map-settings-counter .fa {
-		cursor: pointer;
-	}
+    #map-settings-counter,
+    #map-settings-counter .fa {
+        cursor: pointer;
+    }
 }
 @media (max-width: 500px) {
-	#section-intro h3 {
-		margin-top: 2em;
-	}
+    #section-intro h3 {
+        margin-top: 2em;
+    }
 }
