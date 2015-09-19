@@ -10,7 +10,7 @@ angular.module('MozMap', [])
             region: '#c3716d',
             country: '#c3a9a8'
         },
-        filterExpressions = [
+        filterWatchExpressions = [
             'filter.vouched',
             'filter.precision.city',
             'filter.precision.region',
@@ -88,7 +88,7 @@ angular.module('MozMap', [])
         $scope.queries = res.data.queries;
         angular.forEach($scope.queries, function (query) {
             $scope.filter[query.type][query.value] = query.default;
-            filterExpressions.push('filter.' + query.type + '["' + query.value + '"]');
+            filterWatchExpressions.push('filter.' + query.type + '["' + query.value + '"]');
         });
 
         $http.get('./mozillians.json').then(function (res) {
@@ -105,7 +105,7 @@ angular.module('MozMap', [])
 
             updateLayers();
 
-            $scope.$watchGroup(filterExpressions, function () {
+            $scope.$watchGroup(filterWatchExpressions, function () {
                 updateLayers();
             });
 
