@@ -5,6 +5,7 @@ angular.module('MozMap', [])
 
     var featureLayer,
         map,
+        mapInteractionEnabled = true,
         colors = {
             city: '#c13832',
             region: '#c3716d',
@@ -83,7 +84,34 @@ angular.module('MozMap', [])
 
         L.mapbox.accessToken = res.data.mapbox_access_token;
 
-        map = L.mapbox.map('map', 'mapbox.streets');
+        map = L.mapbox.map('map', 'mapbox.streets', { zoomControl: false });
+
+        new L.Control.Zoom({ position: 'topright' }).addTo(map);
+
+        toggleMapInteraction();
+        var MyControl = L.Control.extend({
+            options: { position: 'topright' },
+            onAdd: function (map) {
+                // create the control container with a particular class name
+                var container = L.DomUtil.create('div', 'leaflet-bar my-custom-control');
+
+                var a = document.createElement('a');
+                a.setAttribute('href', '#');
+                a.setAttribute('title', 'Karteninteraktion an/abschalten');
+                a.setAttribute('class', 'map-interaction-toggle');
+                a.innerHTML = '<i class="fa fa-lock"></i>';
+                a.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    toggleMapInteraction();
+                    a.innerHTML = mapInteractionEnabled ? '<i class="fa fa-unlock-alt"></i>' : '<i class="fa fa-lock"></i>';
+                }, false);
+
+                container.appendChild(a);
+
+                return container;
+            }
+        });
+        map.addControl(new MyControl());
 
         $scope.queries = res.data.queries;
         angular.forEach($scope.queries, function (query) {
@@ -114,6 +142,19 @@ angular.module('MozMap', [])
             });
         });
     });
+
+    function toggleMapInteraction() {
+        mapInteractionEnabled = !mapInteractionEnabled;
+
+        if (mapInteractionEnabled) {
+            map.dragging.enable();
+            map.scrollWheelZoom.enable();
+        } else {
+            map.dragging.disable();
+            map.scrollWheelZoom.disable();
+            if (map.tap) map.tap.disable();
+        }
+    }
 
     function updateLayers(dontMove) {
         featureLayer.clearLayers();

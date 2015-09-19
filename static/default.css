@@ -25,6 +25,11 @@
     float: left;
     background: #ddd;
 }
+.map-interaction-toggle {
+    text-align: center;
+    line-height: 26px;
+    color: #404040;
+}
 
 #map-sidebar {
     width: 200px;
@@ -176,11 +181,6 @@
 }
 #map-settings label {
     cursor: pointer;
-}
-
-.leaflet-left {
-    left: auto;
-    right: 10px;
 }
 
 /* mozilla-de */
