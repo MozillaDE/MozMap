@@ -180,6 +180,14 @@
     to     { transform: rotate(0deg)   scale(1);   }
 }
 
+/* show grab cursor only if map interaction is enabled */
+.leaflet-container {
+    cursor: default;
+}
+.map-interaction-enabled .leaflet-container {
+    cursor: grab;
+}
+
 #map-settings h3 {
     padding-top: 16px;
 }

@@ -60,7 +60,7 @@
             </section>
 
             <section class="module" id="section-map" ng-controller="MozMapController">
-                <div class="container">
+                <div class="container" ng-class="{ 'map-interaction-enabled': mapInteractionEnabled }">
 
                     <div id="map-sidebar">
                         <div id="userlist-container">

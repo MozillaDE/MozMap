@@ -5,7 +5,6 @@ angular.module('MozMap', [])
 
     var featureLayer,
         map,
-        mapInteractionEnabled = true,
         colors = {
             city: '#c13832',
             region: '#c3716d',
@@ -21,6 +20,7 @@ angular.module('MozMap', [])
 
     $scope.mozillians = [];
     $scope.activeUser = null;
+    $scope.mapInteractionEnabled = true;
 
     $scope.settings = {
         irc: false
@@ -103,7 +103,8 @@ angular.module('MozMap', [])
                 a.addEventListener('click', function (e) {
                     e.preventDefault();
                     toggleMapInteraction();
-                    a.innerHTML = mapInteractionEnabled ? '<i class="fa fa-unlock-alt"></i>' : '<i class="fa fa-lock"></i>';
+                    a.innerHTML = $scope.mapInteractionEnabled ? '<i class="fa fa-unlock-alt"></i>' : '<i class="fa fa-lock"></i>';
+                    $scope.$apply();
                 }, false);
 
                 container.appendChild(a);
@@ -144,9 +145,9 @@ angular.module('MozMap', [])
     });
 
     function toggleMapInteraction() {
-        mapInteractionEnabled = !mapInteractionEnabled;
+        $scope.mapInteractionEnabled = !$scope.mapInteractionEnabled;
 
-        if (mapInteractionEnabled) {
+        if ($scope.mapInteractionEnabled) {
             map.dragging.enable();
             map.scrollWheelZoom.enable();
         } else {
