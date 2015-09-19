@@ -163,14 +163,21 @@
     float: right;
     line-height: 30px;
     transform-origin: center;
-    animation: settings-highlight 1s ease-in-out;
-    animation-delay: 2s;
+}
+#map-settings-counter .fa-cog,
+.map-interaction-toggle-control {
+    animation: settings-highlight 1.5s ease-in-out 2s;
     animation-fill-mode: forwards;
 }
 @keyframes settings-highlight {
-    from { transform: rotate(0deg) scale(1); }
-    50%  { transform: rotate(180deg) scale(1.5); }
-    to   { transform: rotate(360deg) scale(1); }
+    from   { transform: rotate(0deg)   scale(1);   }
+    12.5%  { transform: rotate(0deg)   scale(1.5); }
+    35%    { transform: rotate(0deg)   scale(1.5); }
+    45%    { transform: rotate(-10deg) scale(1.5); }
+    55%    { transform: rotate(+10deg) scale(1.5); }
+    65%    { transform: rotate(0deg)   scale(1.5); }
+    87.5%  { transform: rotate(0deg)   scale(1.5); }
+    to     { transform: rotate(0deg)   scale(1);   }
 }
 
 #map-settings h3 {

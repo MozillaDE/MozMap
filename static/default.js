@@ -93,7 +93,7 @@ angular.module('MozMap', [])
             options: { position: 'topright' },
             onAdd: function (map) {
                 // create the control container with a particular class name
-                var container = L.DomUtil.create('div', 'leaflet-bar my-custom-control');
+                var container = L.DomUtil.create('div', 'leaflet-bar map-interaction-toggle-control');
 
                 var a = document.createElement('a');
                 a.setAttribute('href', '#');
