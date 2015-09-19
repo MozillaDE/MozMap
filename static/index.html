@@ -67,7 +67,7 @@
                             <ul id="userlist">
                                 <li ng-repeat="mozillian in mozillians | filter: queryFilter | filter : precisionFilter | orderBy : 'full_name || username'">
                                     <a ng-click="openPopup(mozillian)" href=""
-				       ng-class="{ active: activeUser }"
+                                       ng-class="{ active: mozillian === activeUser }"
                                        scroll-if="mozillian === activeUser">
                                         <b>{{ mozillian.full_name || mozillian.username }}</b>
                                         <i ng-if="!mozillian.map_data" class="fa fa-map-marker"></i><i ng-if="!mozillian.map_data" class="fa fa-times"></i>
