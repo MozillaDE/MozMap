@@ -188,6 +188,10 @@
     cursor: grab;
 }
 
+.leaflet-dragging .map-interaction-enabled .leaflet-container {
+    cursor: grabbing;
+}
+
 #map-settings h3 {
     padding-top: 16px;
 }
