@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MozMap', [])
-.controller('MozMapController', function ($scope, $http) {
+.controller('MozMapController', function ($scope, $http, $filter) {
 
     var featureLayer,
         map,
@@ -132,14 +132,12 @@ angular.module('MozMap', [])
             featureLayer = new L.mapbox.featureLayer();
             featureLayer.addTo(map);
 
-            updateLayers();
-
-            $scope.$watchGroup(filterWatchExpressions, function () {
-                updateLayers();
+            $scope.$watch('settings.irc', function () {
+                updatePopups();
             });
 
-            $scope.$watch('settings.irc', function () {
-                updateLayers(true);
+            $scope.$watchGroup(filterWatchExpressions, function () {
+                updateMarkers();
             });
         });
     });
@@ -157,71 +155,102 @@ angular.module('MozMap', [])
         }
     }
 
-    function updateLayers(dontMove) {
-        featureLayer.clearLayers();
+    function updatePopups(forceUpdate) {
+        angular.forEach($scope.mozillians, function (user) {
+            updatePopup(user);
+        });
 
-        for (var i = 0; i < $scope.mozillians.length; i++) {
-            var user = $scope.mozillians[i];
-            if (user.map_data && $scope.precisionFilter(user) && $scope.queryFilter(user)) {
-                addMarker(user);
-            }
+        // check popup position if popup is opened
+        if ($scope.activeUser && $scope.activeUser.marker) {
+            $scope.activeUser.marker.getPopup().update();
+        }
+    }
+
+    function updatePopup(user) {
+        if (!user.popup) {
+            user.popup = document.createElement('div');
+            user.popup.setAttribute('class', 'popup_main');
         }
 
-        if (!dontMove && featureLayer.getLayers().length > 0) {
+        user.popup.innerHTML =
+
+            '<img src="' + (user.photo ? user.photo : 'images/mozillian.png') + '" alt="Picture" width="50" height="50">' +
+
+            '<div class="text_info">' +
+                // name
+                '<b>' + (user.full_name || user.username) + '</b>' +
+
+                // vouch status
+                (user.is_vouched
+                    ? '' // ' <i class="fa fa-check" title="Andere Mozillianer haben für dieses Profil gebürgt."></i>'
+                    : ' <i class="fa fa-exclamation-circle" title="Für dieses Profil wurde noch nicht gebürgt."></i>') +
+
+                '<br>' +
+
+                // irc
+                ($scope.settings.irc && user.ircname
+                    ? ('<i class="fa fa-fw fa-comments" title="IRC"></i> ' + user.ircname + '<br>') : '') +
+
+                // location
+                (user.location ? ('<i class="fa fa-fw fa-map-marker"></i> ' + user.location + '<br>') : '') +
+
+                // profile
+                '<i class="fa fa-fw fa-globe"></i> <a href="' + user.url + '" target="_blank">Mozillianer-Profil</a>' +
+
+            '</div>' +
+
+            '<div style="clear:both"></div>';
+    }
+
+    function updateMarkers() {
+        var filteredList = $filter('filter')($scope.mozillians, function (user) {
+            return user.map_data && $scope.precisionFilter(user) && $scope.queryFilter(user);
+        });
+
+        // remove all markers that are not in the new selection
+        featureLayer.eachLayer(function (marker) {
+            for (var i in filteredList) {
+                if (marker == filteredList[i].marker) {
+                    // it still exits, do not remove it
+                    return;
+                }
+            }
+
+            // not returned yet, remove it
+            featureLayer.removeLayer(marker);
+        });
+
+        // add missing markers
+        angular.forEach(filteredList, function (user) {
+            addMarker(user);
+        });
+
+        // auto-zoom layer
+        if (featureLayer.getLayers().length > 0) {
             map.fitBounds(featureLayer.getBounds());
         }
 
+        // reopen popup if necessary and
         if ($scope.activeUser) {
             $scope.openPopup($scope.activeUser);
         }
     }
 
     function addMarker(user) {
-        user.marker = L.marker([user.map_data.center[1], user.map_data.center[0]], {
+        if (!user.marker) {
+            user.marker = L.marker([user.map_data.center[1], user.map_data.center[0]], {
                 icon: L.mapbox.marker.icon({
                     'marker-color': colors[user.locationAccuracy]
                 })
             })
-            .bindPopup(getPopUpHTML(user))
-            .addTo(featureLayer)
+            .bindPopup(user.popup)
             .on('click', function (e) {
                 $scope.activeUser = user;
                 $scope.$apply();
             });
-    }
+        }
 
-    function getPopUpHTML(user) {
-        return (
-            '<div class="popup_main">' +
-
-                '<img src="' + (user.photo ? user.photo : 'images/mozillian.png') + '" alt="Picture" width="50" height="50">' +
-
-                '<div class="text_info">' +
-                    // name
-                    '<b>' + (user.full_name || user.username) + '</b>' +
-
-                    // vouch status
-                    (user.is_vouched
-                        ? '' // ' <i class="fa fa-check" title="Andere Mozillianer haben für dieses Profil gebürgt."></i>'
-                        : ' <i class="fa fa-exclamation-circle" title="Für dieses Profil wurde noch nicht gebürgt."></i>') +
-
-                    '<br>' +
-
-                    // irc
-                    ($scope.settings.irc && user.ircname
-                        ? ('<i class="fa fa-fw fa-comments" title="IRC"></i> ' + user.ircname + '<br>') : '') +
-
-                    // location
-                    (user.location ? ('<i class="fa fa-fw fa-map-marker"></i> ' + user.location + '<br>') : '') +
-
-                    // profile
-                    '<i class="fa fa-fw fa-globe"></i> <a href="' + user.url + '" target="_blank">Mozillianer-Profil</a>' +
-
-                '</div>'+
-
-            '</div>' +
-
-            '<div style="clear:both"></div>');
+        user.marker.addTo(featureLayer);
     }
 
     function createLocationDetails(user) {
