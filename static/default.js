@@ -49,14 +49,13 @@ angular.module('MozMap', [])
     };
 
     $scope.queryFilter = function (user) {
-        var i, type, value,
-            len = $scope.queries.length;
+        var i, type, value;
 
         if ($scope.filter.vouched && !user.is_vouched) {
             return false;
         }
 
-        for (i = 0; i < len; i++) {
+        for (i in $scope.queries) {
             type = $scope.queries[i].type;
             value = $scope.queries[i].value;
 
@@ -89,13 +88,12 @@ angular.module('MozMap', [])
         new L.Control.Zoom({ position: 'topright' }).addTo(map);
 
         toggleMapInteraction();
-        var MyControl = L.Control.extend({
+        var InteractionToggleControl = L.Control.extend({
             options: { position: 'topright' },
             onAdd: function (map) {
-                // create the control container with a particular class name
-                var container = L.DomUtil.create('div', 'leaflet-bar map-interaction-toggle-control');
+                var container = L.DomUtil.create('div', 'leaflet-bar map-interaction-toggle-control'),
+                    a = document.createElement('a');
 
-                var a = document.createElement('a');
                 a.setAttribute('href', '#');
                 a.setAttribute('title', 'Karteninteraktion an/abschalten');
                 a.setAttribute('class', 'map-interaction-toggle');
@@ -112,7 +110,7 @@ angular.module('MozMap', [])
                 return container;
             }
         });
-        map.addControl(new MyControl());
+        map.addControl(new InteractionToggleControl());
 
         $scope.queries = res.data.queries;
         angular.forEach($scope.queries, function (query) {
@@ -124,21 +122,15 @@ angular.module('MozMap', [])
 
             $scope.mozillians = res.data;
 
-            for (var i = 0; i < $scope.mozillians.length; i++) {
-                var user = $scope.mozillians[i];
-                createLocationDetails(user);
+            for (var i in $scope.mozillians) {
+                createLocationDetails($scope.mozillians[i]);
             }
 
             featureLayer = new L.mapbox.featureLayer();
             featureLayer.addTo(map);
 
-            $scope.$watch('settings.irc', function () {
-                updatePopups();
-            });
-
-            $scope.$watchGroup(filterWatchExpressions, function () {
-                updateMarkers();
-            });
+            $scope.$watch('settings.irc', updatePopups);
+            $scope.$watchGroup(filterWatchExpressions, updateMarkers);
         });
     });
 
@@ -155,10 +147,8 @@ angular.module('MozMap', [])
         }
     }
 
-    function updatePopups(forceUpdate) {
-        angular.forEach($scope.mozillians, function (user) {
-            updatePopup(user);
-        });
+    function updatePopups() {
+        angular.forEach($scope.mozillians, updatePopup);
 
         // check popup position if popup is opened
         if ($scope.activeUser && $scope.activeUser.marker) {
@@ -221,9 +211,7 @@ angular.module('MozMap', [])
         });
 
         // add missing markers
-        angular.forEach(filteredList, function (user) {
-            addMarker(user);
-        });
+        angular.forEach(filteredList, addMarker);
 
         // auto-zoom layer
         if (featureLayer.getLayers().length > 0) {
