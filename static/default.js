@@ -158,11 +158,18 @@ angular.module('MozMap', [])
 
     function updatePopup(user) {
         if (!user.popup) {
-            user.popup = document.createElement('div');
-            user.popup.setAttribute('class', 'popup_main');
+            user.popup = L.popup({
+                autoPanPaddingTopLeft: [10, 10],
+                autoPanPaddingBottomRight: [10, 60]
+            });
+
+            var elem = document.createElement('div');
+            elem.setAttribute('class', 'popup_main');
+
+            user.popup.setContent(elem);
         }
 
-        user.popup.innerHTML =
+        user.popup.getContent().innerHTML =
 
             '<img src="' + (user.photo ? user.photo : 'images/mozillian.png') + '" alt="Picture" width="50" height="50">' +
 
