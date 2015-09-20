@@ -71,7 +71,7 @@ angular.module('MozMap', [])
     };
 
     $scope.openPopup = function (user) {
-        if (user.marker) {
+        if (user && user.marker) {
             user.marker.openPopup();
         } else if ($scope.activeUser && $scope.activeUser.marker) {
             $scope.activeUser.marker.closePopup();
@@ -111,6 +111,10 @@ angular.module('MozMap', [])
             }
         });
         map.addControl(new InteractionToggleControl());
+
+        map.on('popupclose', function () {
+            $scope.activeUser = null;
+        });
 
         $scope.queries = res.data.queries;
         angular.forEach($scope.queries, function (query) {
@@ -205,6 +209,7 @@ angular.module('MozMap', [])
         });
 
         // remove all markers that are not in the new selection
+        var activeUser = $scope.activeUser;
         featureLayer.eachLayer(function (marker) {
             for (var i in filteredList) {
                 if (marker == filteredList[i].marker) {
@@ -216,6 +221,8 @@ angular.module('MozMap', [])
             // not returned yet, remove it
             featureLayer.removeLayer(marker);
         });
+        // undo popupclose listener
+        $scope.activeUser = activeUser;
 
         // add missing markers
         angular.forEach(filteredList, addMarker);
