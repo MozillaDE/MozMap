@@ -16,7 +16,11 @@ To be able to start the server you have to create a `config.json` file. Please m
 {
     "mozillians_api_key": "-your-key-here-",
     "mapbox_access_token": "-your-token-here-",
-    "server_port": 3000,
+    "port_http": 3000,
+    "port_https": 0,
+    "force_https": false,
+    "ssl_key": "/path/to/privkey.pem",
+    "ssl_cert": "/path/to/cert.pem",
     "local_updates_only": true,
     "min_delay": 3600000,
     "queries": [
@@ -31,6 +35,8 @@ To be able to start the server you have to create a `config.json` file. Please m
     ]
 }
 ```
+
+Enable https by setting a `port_https` not equal to `0`. You can enable a redirect from http to https by setting `force_https` to `true`.
 
 ### Install Node
 First you have to install [NodeJS](https://nodejs.org/). Please make sure to install version 4.0 or later.
