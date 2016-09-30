@@ -18,7 +18,7 @@
   "author": {
     "name": "Alexander Ploner",
     "email": "alex@neatnet.de",
-    "url": "http://www.alexander-ploner.com"
+    "url": "https://www.alexander-ploner.com"
   },
   "contributors": [
     "freaktechnik (http://humanoids.be)"
@@ -26,6 +26,6 @@
   "license": "MIT",
   "dependencies": {
     "co": "^4.6.0",
-    "express": "^4.13.3"
+    "express": "^4.14.0"
   }
 }
