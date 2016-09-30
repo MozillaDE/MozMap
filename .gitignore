@@ -3,3 +3,5 @@ cache/
 config.json
 .*
 !.gitignore
+static/mozillians.json
+static/mozillians-private.json
