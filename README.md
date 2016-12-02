@@ -1,7 +1,7 @@
 # MozMap
 A map with Mozillians from the German-speaking Mozillia community. 
 
-## Setup
+## Configuration
 
 ### Getting a Mozillians API key
 Login to mozillians.org and go to [the API keys](https://mozillians.org/en-US/apikeys/) and get your key.
@@ -38,6 +38,8 @@ To be able to start the server you have to create a `data/config/config.json` fi
 
 Enable https by setting a `port_https` not equal to `0`. You can enable a redirect from http to https by setting `force_https` to `true`.
 
+## Start Server without Docker
+
 ### Install Node
 First you have to install [NodeJS](https://nodejs.org/). Please make sure to install version 4.0 or later.
 
@@ -56,6 +58,20 @@ $ node index.js
 
 ### View the Map
 Now you can go to `localhost:3000` and view the magic.
+
+## Start Server with Docker
+
+1. Build Image
+   ```bash
+   docker build -t mozilla-de/mozmap .
+   ```
+
+2. Run Image
+   ```bash
+   docker run -p 3000:3000 -v "$(pwd)/data:/usr/src/app/data" mozilla-de/mozmap
+   ```
+
+After some seconds you should be able to open the map in your browser at `localhost:3000`.
 
 ## Contributing
 Test it, hack it, create Pull Requests.
