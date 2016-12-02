@@ -10,7 +10,7 @@ Login to mozillians.org and go to [the API keys](https://mozillians.org/en-US/ap
 You can find all the relevant information on [mapbox](https://www.mapbox.com/help/create-api-access-token/) itself.
 
 ### Create the config file
-To be able to start the server you have to create a `config.json` file. Please make sure to add your keys in the file. Even though the config.json file is under gitignore, check before commiting that you are not leaking your keys!
+To be able to start the server you have to create a `data/config/config.json` file. Please make sure to add your keys in the file. Even though the config.json file is under gitignore, check before committing that you are not leaking your keys!
 
 ```json
 {

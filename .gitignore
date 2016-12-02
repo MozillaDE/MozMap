@@ -1,7 +1,7 @@
 node_modules/
-cache/
-config.json
-.*
-!.gitignore
+data/cache/
+data/config/config.json
 static/mozillians.json
 static/mozillians-private.json
+npm-debug.log
+.idea/
