@@ -122,7 +122,7 @@ angular.module('MozMap', [])
             filterWatchExpressions.push('filter.' + query.type + '["' + query.value + '"]');
         });
 
-        $http.get('./mozillians.json').then(function (res) {
+        $http.get('./generated/mozillians.json').then(function (res) {
 
             $scope.mozillians = res.data;
 
