@@ -1,5 +1,5 @@
 # MozMap
-A map with Mozillians from the German-speaking Mozillia community. 
+A map with Mozillians from the German-speaking Mozilla community. 
 
 ## Configuration
 
@@ -42,35 +42,29 @@ Enable https by setting a `port_https` not equal to `0`. You can enable a redire
 
 ## Start Server without Docker
 
-1. Install Node
+Make sure you have [NodeJS installed](https://nodejs.org/en/download/) on your machine. The server requires NodeJS version 4 or later.
 
-    First you have to install [NodeJS](https://nodejs.org/). Please make sure to install version 4.0 or later.
+```bash
+# install dependencies
+npm install
 
-2. Install the dependencies
-
-    ```bash
-    npm install
-    ```
-
-3. Start the server
-
-    ```bash
-    node index.js
-    ```
+# start server
+node server.js
+```
 
 Now you can go to `localhost:3000` and view the magic.
 
 ## Start Server with Docker
 
-1. Build Image
-   ```bash
-   docker build -t mozilla-de/mozmap .
-   ```
+You have to [install Docker](https://www.docker.com/products/docker) to run the following commands.
 
-2. Run Image
-   ```bash
-   docker run -p 3000:3000 -v "$(pwd)/data:/usr/src/app/data" mozilla-de/mozmap
-   ```
+```bash
+# build image
+docker build -t mozilla-de/mozmap .
+
+# run image
+docker run -p 3000:3000 -v "$(pwd)/data:/usr/src/app/data" mozilla-de/mozmap
+```
 
 After some seconds you should be able to open the map in your browser at `localhost:3000`.
 
