@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "A map with Mozillians from the German-speaking Mozillia community.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "cp -r node_modules/mozilla-tabzilla static/"
   },
   "keywords": [
     "mozilla",
@@ -25,6 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "co": "^4.6.0",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "mozilla-tabzilla": "^0.5.1"
   }
 }

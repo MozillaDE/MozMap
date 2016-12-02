@@ -4,3 +4,4 @@ data/config/config.json
 data/generated/
 npm-debug.log
 .idea/
+static/mozilla-tabzilla/

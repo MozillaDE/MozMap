@@ -19,8 +19,7 @@
         <link rel="stylesheet" href="default.css">
 
         <!-- Tabzilla intergration -->
-        <link rel="stylesheet" href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
-        <script src="https://mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
+        <link rel="stylesheet" type="text/css" href="mozilla-tabzilla/css/tabzilla.css" media="screen">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
@@ -32,7 +31,10 @@
     <body>
         <header id="masthead">
             <div class="container">
-                <a href="/" id="tabzilla" aria-label="Mozilla links">Mozilla</a>
+                <div id="tabzilla">
+                    <a href="https://www.mozilla.org/">Mozilla</a>
+                </div>
+
                 <nav id="nav-main" role="navigation">
                     <ul id="nav-main-menu">
                         <li class="first"><a href="https://sendto.mozilla.org/page/contribute/">Spenden</a></li>
