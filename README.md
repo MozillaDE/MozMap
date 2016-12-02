@@ -3,14 +3,16 @@ A map with Mozillians from the German-speaking Mozillia community.
 
 ## Configuration
 
-### Getting a Mozillians API key
-Login to mozillians.org and go to [the API keys](https://mozillians.org/en-US/apikeys/) and get your key.
+To be able to start the server you have to create a `data/config/config.json` file. Please make sure to add both, a valid Mozillians API key and a mapbox token. Quick reminder if you're contributing to this repo: make sure you're not leaking your keys! :)
 
-### Getting a mapbox token
+**Mozillians API key**
+
+Log in to mozillians.org and open the [manage API keys](https://mozillians.org/apikeys/) page. Create a new API key for API version 2.
+
+**mapbox token**
+
 You can find all the relevant information on [mapbox](https://www.mapbox.com/help/create-api-access-token/) itself.
 
-### Create the config file
-To be able to start the server you have to create a `data/config/config.json` file. Please make sure to add your keys in the file. Even though the config.json file is under gitignore, check before committing that you are not leaking your keys!
 
 ```json
 {
@@ -40,23 +42,22 @@ Enable https by setting a `port_https` not equal to `0`. You can enable a redire
 
 ## Start Server without Docker
 
-### Install Node
-First you have to install [NodeJS](https://nodejs.org/). Please make sure to install version 4.0 or later.
+1. Install Node
 
-### Install the dependencies
+    First you have to install [NodeJS](https://nodejs.org/). Please make sure to install version 4.0 or later.
 
-```bash
-$ npm install
-```
+2. Install the dependencies
 
-### Starting the server
+    ```bash
+    npm install
+    ```
 
-Start the server with
-```bash
-$ node index.js
-```
+3. Start the server
 
-### View the Map
+    ```bash
+    node index.js
+    ```
+
 Now you can go to `localhost:3000` and view the magic.
 
 ## Start Server with Docker
