@@ -43,7 +43,7 @@ First you have to install [NodeJS](https://nodejs.org/). Please make sure to ins
 
 ### Install the dependencies
 
-```ash
+```bash
 $ npm install
 ```
 
