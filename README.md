@@ -49,7 +49,7 @@ Make sure you have [NodeJS installed](https://nodejs.org/en/download/) on your m
 npm install
 
 # start server
-node server.js
+npm start
 ```
 
 Now you can go to `localhost:3000` and view the magic.
