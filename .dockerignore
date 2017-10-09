@@ -3,3 +3,5 @@ data/
 npm-debug.log
 .idea/
 static/mozilla-tabzilla/
+docker-compose.yml
+Dockerfile
